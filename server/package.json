@@ -6,7 +6,9 @@
     "development": "npm run dev"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "sqlite3": "^5.0.0",
+    "typeorm": "^0.2.28"
   },
   "devDependencies": {
     "@lacussoft/eslint-config-standard": "^1.0.8",
