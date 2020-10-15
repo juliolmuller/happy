@@ -1,5 +1,8 @@
 /* eslint-disable camelcase */
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm'
+import {
+  Column, Entity, JoinColumn, OneToMany, PrimaryGeneratedColumn,
+} from 'typeorm'
+import Photo from './Photo'
 
 @Entity('orphanages')
 class Orphanage {
@@ -27,6 +30,12 @@ class Orphanage {
 
   @Column()
   open_on_weekends: boolean
+
+  @JoinColumn({ name: 'orphanage_id' })
+  @OneToMany(() => Photo, (photo) => photo.orphanage, {
+    cascade: ['insert', 'update'],
+  })
+  photos: Photo[]
 }
 
 export default Orphanage

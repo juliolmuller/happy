@@ -1,4 +1,4 @@
-import { Request, Response } from 'express'
+import { Express, Request, Response } from 'express'
 import { getRepository } from 'typeorm'
 import { StatusCodes } from 'http-status-codes'
 import Orphanage from '../models/Orphanage'
@@ -26,6 +26,7 @@ async function show(req: Request, res: Response): Promise<void> {
 }
 
 async function store(req: Request, res: Response): Promise<void> {
+  const uploadedFiles = req.files as Express.Multer.File[]
   const orphanageRepository = getRepository(Orphanage)
   const orphanage = orphanageRepository.create({
     name: req.body.name,
@@ -35,6 +36,7 @@ async function store(req: Request, res: Response): Promise<void> {
     instructions: req.body.instructions,
     opening_hours: req.body.opening_hours,
     open_on_weekends: req.body.open_on_weekends,
+    photos: uploadedFiles.map((photo) => ({ path: photo.filename })),
   })
 
   await orphanageRepository.save(orphanage)
