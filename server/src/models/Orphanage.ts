@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import {
   Column, Entity, JoinColumn, OneToMany, PrimaryGeneratedColumn,
 } from 'typeorm'
@@ -25,11 +24,11 @@ class Orphanage {
   @Column()
   instructions: string
 
-  @Column()
-  opening_hours: string
+  @Column({ name: 'opening_hours' })
+  openingHours: string
 
-  @Column()
-  open_on_weekends: boolean
+  @Column({ name: 'open_on_weekends' })
+  openOnWeekends: boolean
 
   @JoinColumn({ name: 'orphanage_id' })
   @OneToMany(() => Photo, (photo) => photo.orphanage, {
