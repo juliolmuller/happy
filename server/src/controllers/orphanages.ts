@@ -3,9 +3,11 @@ import { getRepository } from 'typeorm'
 import { StatusCodes } from 'http-status-codes'
 import Orphanage from '../models/Orphanage'
 
+const relations = ['photos']
+
 async function index(req: Request, res: Response): Promise<void> {
   const orphanageRepository = getRepository(Orphanage)
-  const orphanages = await orphanageRepository.find()
+  const orphanages = await orphanageRepository.find({ relations })
 
   res.status(StatusCodes.OK).json(orphanages)
 }
@@ -15,7 +17,7 @@ async function show(req: Request, res: Response): Promise<void> {
   const orphanageRepository = getRepository(Orphanage)
 
   try {
-    const orphanage = await orphanageRepository.findOneOrFail(id)
+    const orphanage = await orphanageRepository.findOneOrFail(id, { relations })
     res.status(StatusCodes.OK).json(orphanage)
   } catch {
     res.status(StatusCodes.NOT_FOUND).json({
