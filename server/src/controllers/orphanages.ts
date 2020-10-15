@@ -3,6 +3,28 @@ import { getRepository } from 'typeorm'
 import { StatusCodes } from 'http-status-codes'
 import Orphanage from '../models/Orphanage'
 
+async function index(req: Request, res: Response): Promise<void> {
+  const orphanageRepository = getRepository(Orphanage)
+  const orphanages = await orphanageRepository.find()
+
+  res.status(StatusCodes.OK).json(orphanages)
+}
+
+async function show(req: Request, res: Response): Promise<void> {
+  const { id } = req.params
+  const orphanageRepository = getRepository(Orphanage)
+
+  try {
+    const orphanage = await orphanageRepository.findOneOrFail(id)
+    res.status(StatusCodes.OK).json(orphanage)
+  } catch {
+    res.status(StatusCodes.NOT_FOUND).json({
+      message: 'Orfanato não cadastrado.',
+    })
+  }
+
+}
+
 async function store(req: Request, res: Response): Promise<void> {
   const orphanageRepository = getRepository(Orphanage)
   const orphanage = orphanageRepository.create({
@@ -20,4 +42,4 @@ async function store(req: Request, res: Response): Promise<void> {
   res.status(StatusCodes.CREATED).json(orphanage)
 }
 
-export default { store }
+export default { index, show, store }
