@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "ts-node-dev src/index.ts --transpile-only --ignore node_modules",
-    "development": "npm run dev"
+    "development": "npm run dev",
+    "typeorm": "ts-node-dev node_modules/typeorm/cli.js",
+    "migrations": "npm run typeorm -- migrations:run",
+    "migrations:fresh": "npm run typeorm -- schema:drop && npm run migrations"
   },
   "dependencies": {
     "express": "^4.17.1",
