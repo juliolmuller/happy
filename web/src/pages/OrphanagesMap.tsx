@@ -41,14 +41,14 @@ function OrphanagesMap(): ReactElement {
         <Marker icon={mapIcon} position={[-25.4719491, -49.2877479]}>
           <Popup closeButton={false} minWidth={240} maxWidth={240} className="map-popup">
             Lar das Meninas
-            <Link to="">
+            <Link to="/orphanages/1">
               <FiArrowRight size={20} color="#ffff" />
             </Link>
           </Popup>
         </Marker>
       </Map>
 
-      <Link to="" title="Cadastrar orfanato" className="btn-new-orphanage">
+      <Link to="/orphanages/new" title="Cadastrar orfanato" className="btn-new-orphanage">
         <FiPlus size={32} color="#fff" />
       </Link>
     </div>
