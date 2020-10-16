@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 import { FiArrowRight, FiPlus } from 'react-icons/fi'
 import leaflet from 'leaflet'
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet'
-import marker from '../../assets/img/logo-icon.svg'
+import marker from '../assets/img/logo-icon.svg'
 import 'leaflet/dist/leaflet.css'
-import '../../assets/styles/orphanages-map.css'
+import '../assets/styles/orphanages-map.css'
 
 const mapIcon = leaflet.icon({
   iconUrl: marker,
@@ -34,7 +34,7 @@ function OrphanagesMap(): ReactElement {
       <Map
         // eslint-disable-next-line no-magic-numbers
         center={[-25.4321773, -49.2884007]}
-        zoom={12.25}
+        zoom={13}
         style={{ width: '100%', height: '100%' }}
       >
         <TileLayer url={`${process.env.REACT_APP_MAPBOX_URL}?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`} />
