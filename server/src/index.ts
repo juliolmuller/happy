@@ -1,4 +1,5 @@
 import path from 'path'
+import cors from 'cors'
 import express from 'express'
 import 'express-async-errors'
 import routes from './routes'
@@ -8,6 +9,7 @@ import './database/connection'
 const port = process.env.PORT || 3030
 const app = express()
 
+app.use(cors())
 app.use(express.json())
 app.use(routes)
 app.use('/storage', express.static(path.join(__dirname, '..', 'storage')))
