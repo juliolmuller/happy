@@ -1,6 +1,7 @@
 import { Express, Request, Response } from 'express'
 import { getRepository } from 'typeorm'
 import { StatusCodes } from 'http-status-codes'
+import * as Yup from 'yup'
 import Orphanage from '../models/Orphanage'
 import orphanageView from '../views/orphanagesView'
 
@@ -24,7 +25,8 @@ async function show(req: Request, res: Response): Promise<void> {
 async function store(req: Request, res: Response): Promise<void> {
   const uploadedFiles = req.files as Express.Multer.File[]
   const orphanageRepository = getRepository(Orphanage)
-  const orphanage = orphanageRepository.create({
+
+  const data = {
     name: req.body.name,
     latitude: req.body.latitude,
     longitude: req.body.longitude,
@@ -33,8 +35,23 @@ async function store(req: Request, res: Response): Promise<void> {
     openingHours: req.body.opening_hours,
     openOnWeekends: req.body.open_on_weekends,
     photos: uploadedFiles.map((photo) => ({ path: photo.filename })),
-  })
+  }
 
+  const schema = Yup.object().shape({
+    name: Yup.string().required(),
+    latitude: Yup.number().required(),
+    longitude: Yup.number().required(),
+    about: Yup.string().required().max(300),
+    instructions: Yup.string().required(),
+    openingHours: Yup.string().required(),
+    openOnWeekends: Yup.boolean().required(),
+    photos: Yup.array(Yup.object().shape({
+      path: Yup.string().required(),
+    })),
+  })
+  await schema.validate(data, { abortEarly: false })
+
+  const orphanage = orphanageRepository.create(data)
   await orphanageRepository.save(orphanage)
 
   res.status(StatusCodes.CREATED).json(orphanageView.render(orphanage))
