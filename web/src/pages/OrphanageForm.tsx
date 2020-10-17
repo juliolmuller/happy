@@ -1,17 +1,9 @@
 import React, { ReactElement } from 'react'
 import { FiPlus } from 'react-icons/fi'
-import leaflet from 'leaflet'
 import { Map, Marker, TileLayer } from 'react-leaflet'
+import mapIcon from '../components/utils/mapIcon'
 import NavBar from '../components/NavBar'
-import marker from '../images/logo-icon.svg'
 import '../styles/pages/orphanage-form.css'
-
-const mapIcon = leaflet.icon({
-  iconUrl: marker,
-  iconSize: [58, 68],
-  iconAnchor: [29, 68],
-  popupAnchor: [0, -60],
-})
 
 function OrphanageForm(): ReactElement {
   return (
