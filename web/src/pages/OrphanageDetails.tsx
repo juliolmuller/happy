@@ -1,9 +1,9 @@
 import React, { ReactElement } from 'react'
-import { useHistory } from 'react-router-dom'
 import { FaWhatsapp } from 'react-icons/fa'
-import { FiClock, FiInfo, FiArrowLeft } from 'react-icons/fi'
+import { FiClock, FiInfo } from 'react-icons/fi'
 import leaflet from 'leaflet'
 import { Map, Marker, TileLayer } from 'react-leaflet'
+import NavBar from '../components/NavBar'
 import marker from '../images/logo-icon.svg'
 import '../styles/pages/orphanage-details.css'
 
@@ -15,19 +15,9 @@ const mapIcon = leaflet.icon({
 })
 
 function OrphanageDetails(): ReactElement {
-  const { goBack } = useHistory()
-
   return (
     <div id="page-orphanage">
-      <aside>
-        <img src={marker} alt="Happy" />
-
-        <footer>
-          <button type="button" onClick={goBack}>
-            <FiArrowLeft size={24} color="#FFF" />
-          </button>
-        </footer>
-      </aside>
+      <NavBar />
 
       <main>
         <div className="orphanage-details">
