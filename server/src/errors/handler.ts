@@ -17,7 +17,7 @@ function handler(error: Error, _req: Request, res: Response, _next: NextFunction
 
     res
       .status(StatusCodes.UNPROCESSABLE_ENTITY)
-      .json({ message: ReasonPhrases.INTERNAL_SERVER_ERROR, errors })
+      .json({ message: ReasonPhrases.UNPROCESSABLE_ENTITY, errors })
     return
   }
 
