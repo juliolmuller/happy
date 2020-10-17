@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 import { FiArrowRight, FiPlus } from 'react-icons/fi'
 import leaflet from 'leaflet'
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet'
-import marker from '../assets/img/logo-icon.svg'
+import marker from '../images/logo-icon.svg'
 import 'leaflet/dist/leaflet.css'
-import '../assets/styles/orphanages-map.css'
+import '../styles/pages/orphanages-map.css'
 
 const mapIcon = leaflet.icon({
   iconUrl: marker,

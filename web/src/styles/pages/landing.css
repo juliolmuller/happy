@@ -18,7 +18,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  background: url(../img/landing.svg) no-repeat 80% center;
+  background: url('../../images/landing.svg') no-repeat 80% center;
 }
 
 #landing main {

@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react'
 import Routes from './routes'
-import './assets/styles/global.css'
+import './styles/app.css'
 
 function App(): ReactElement {
   return (

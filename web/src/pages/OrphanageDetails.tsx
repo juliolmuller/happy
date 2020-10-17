@@ -4,8 +4,8 @@ import { FaWhatsapp } from 'react-icons/fa'
 import { FiClock, FiInfo, FiArrowLeft } from 'react-icons/fi'
 import leaflet from 'leaflet'
 import { Map, Marker, TileLayer } from 'react-leaflet'
-import marker from '../assets/img/logo-icon.svg'
-import '../assets/styles/orphanage-details.css'
+import marker from '../images/logo-icon.svg'
+import '../styles/pages/orphanage-details.css'
 
 const mapIcon = leaflet.icon({
   iconUrl: marker,

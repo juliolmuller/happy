@@ -3,8 +3,8 @@ import { useHistory } from 'react-router-dom'
 import { FiArrowLeft, FiPlus } from 'react-icons/fi'
 import leaflet from 'leaflet'
 import { Map, Marker, TileLayer } from 'react-leaflet'
-import marker from '../assets/img/logo-icon.svg'
-import '../assets/styles/orphanage-form.css'
+import marker from '../images/logo-icon.svg'
+import '../styles/pages/orphanage-form.css'
 
 const mapIcon = leaflet.icon({
   iconUrl: marker,
