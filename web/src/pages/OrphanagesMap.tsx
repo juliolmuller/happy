@@ -4,7 +4,6 @@ import { FiArrowRight, FiPlus } from 'react-icons/fi'
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet'
 import mapIcon from '../components/utils/mapIcon'
 import marker from '../images/logo-icon.svg'
-import 'leaflet/dist/leaflet.css'
 import '../styles/pages/orphanages-map.css'
 
 function OrphanagesMap(): ReactElement {
