@@ -20,6 +20,7 @@ module.exports = {
     },
   },
   rules: {
+    'camelcase': ['error', {allow: ['opening_hours', 'open_on_weekends']}],
     'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': 'off',
   },
