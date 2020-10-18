@@ -1,0 +1,26 @@
+{
+  "expo": {
+    "name": "happy-mobile",
+    "slug": "happy-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./src/images/icon.png",
+    "splash": {
+      "image": "./src/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "web": {
+      "favicon": "./src/images/favicon.png"
+    }
+  }
+}
