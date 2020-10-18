@@ -5,14 +5,14 @@ import marker from '../images/logo-icon.svg'
 import '../styles/components/navbar.css'
 
 function NavBar(): ReactElement {
-  const { goBack } = useHistory()
+  const { push } = useHistory()
 
   return (
     <aside className="navbar">
       <img src={marker} alt="Happy logo" />
 
       <footer>
-        <button type="button" onClick={goBack} title="Voltar">
+        <button type="button" onClick={() => push('/app')} title="Voltar">
           <FiArrowLeft size={24} color="#fff" />
         </button>
       </footer>
