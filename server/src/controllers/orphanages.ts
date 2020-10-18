@@ -33,7 +33,7 @@ async function store(req: Request, res: Response): Promise<void> {
     about: req.body.about,
     instructions: req.body.instructions,
     openingHours: req.body.opening_hours,
-    openOnWeekends: req.body.open_on_weekends,
+    openOnWeekends: req.body.open_on_weekends === 'true',
     photos: uploadedFiles.map((photo) => ({ path: photo.filename })),
   }
 
