@@ -2,19 +2,12 @@ import React, { FC } from 'react'
 import { Dimensions, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import MapView, { Callout, Marker, PROVIDER_GOOGLE } from 'react-native-maps'
+import { RectButton } from 'react-native-gesture-handler'
 import { Feather } from '@expo/vector-icons'
 import mapMarker from '../images/map-marker.png'
 
 const OrphanagesMap: FC = () => {
   const { navigate } = useNavigation()
-
-  const handleNavigateToOrphanageDetails = () => {
-    navigate('OrphanageDetails')
-  }
-
-  const handleNavigateToOrphanageForm = () => {
-    navigate('OrphanageForm')
-  }
 
   return (
     <View style={styles.container}>
@@ -33,7 +26,7 @@ const OrphanagesMap: FC = () => {
           coordinate={{ latitude: -25.4321773, longitude: -49.2884007 }}
           calloutAnchor={{ x: 2.7, y: 0.8 }}
         >
-          <Callout tooltip onPress={handleNavigateToOrphanageDetails}>
+          <Callout tooltip onPress={() => navigate('OrphanageDetails')}>
             <View style={styles.calloutContainer}>
               <Text style={styles.calloutText}>Lar dos Boys</Text>
             </View>
@@ -45,9 +38,9 @@ const OrphanagesMap: FC = () => {
         <Text style={styles.footerText}>
           2 orfanatos encontrados
         </Text>
-        <TouchableOpacity style={styles.footerButton} onPress={handleNavigateToOrphanageForm}>
+        <RectButton style={styles.footerButton} onPress={() => navigate('OrphanagePosition')}>
           <Feather name="plus" size={20} color="#fff" />
-        </TouchableOpacity>
+        </RectButton>
       </View>
     </View>
   )
