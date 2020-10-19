@@ -1,12 +1,22 @@
 import React, { ReactElement } from 'react'
-import {
-  Dimensions, StyleSheet, Text, TouchableOpacity, View,
-} from 'react-native'
+import { Dimensions, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import MapView, { Callout, Marker, PROVIDER_GOOGLE } from 'react-native-maps'
 import mapMarker from './images/map-marker.png'
 import { Feather } from '@expo/vector-icons'
+import { useFonts } from 'expo-font'
+import {
+  Nunito_600SemiBold as Nunito600,
+  Nunito_700Bold as Nunito700,
+  Nunito_800ExtraBold as Nunito800,
+} from '@expo-google-fonts/nunito'
 
-function App(): ReactElement {
+function App(): ReactElement | null {
+  const [fontsLoaded] = useFonts({ Nunito600, Nunito700, Nunito800 })
+
+  if (!fontsLoaded) {
+    return null
+  }
+
   return (
     <View style={styles.container}>
       <MapView
@@ -64,6 +74,7 @@ const styles = StyleSheet.create({
   },
 
   calloutText: {
+    fontFamily: 'Nunito700',
     color: '#0089a5',
     fontSize: 14,
   },
@@ -84,6 +95,7 @@ const styles = StyleSheet.create({
   },
 
   footerText: {
+    fontFamily: 'Nunito700',
     color: '#8fa7b3',
   },
 
