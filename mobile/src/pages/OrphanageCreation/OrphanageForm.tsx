@@ -1,8 +1,9 @@
-import React, { FC, useEffect, useState } from 'react'
-import { ScrollView, View, StyleSheet, Switch, Text, TextInput, TouchableOpacity } from 'react-native'
+import React, { FC, useState } from 'react'
+import { Image, ScrollView, StyleSheet, Switch, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { useRoute } from '@react-navigation/native'
-import { Feather } from '@expo/vector-icons'
 import { RectButton } from 'react-native-gesture-handler'
+import * as ImagePicker from 'expo-image-picker'
+import { Feather } from '@expo/vector-icons'
 
 interface OrphanageFormRouteParams {
   latitude: number
@@ -17,6 +18,26 @@ const OrphanageForm: FC = () => {
   const [instructions, setInstructions] = useState('')
   const [opening_hours, setOpeningHours] = useState('')
   const [open_on_weekends, setOpenOnWeekends] = useState(false)
+  const [photos, setPhotos] = useState<string[]>([])
+
+  const handleBrowsePhoto = async () => {
+    const { status } = await ImagePicker.requestCameraRollPermissionsAsync()
+
+    if (status !== 'granted') {
+      alert('Ops! Você precisa fornecer uma foto para cadastra o orfanato.')
+      return
+    }
+
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaType: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      quality: 1,
+    })
+
+    if (!result.cancelled) {
+      setPhotos([...photos, result.uri])
+    }
+  }
 
   const handleFormSubmit = () => {
     console.log({
@@ -50,7 +71,12 @@ const OrphanageForm: FC = () => {
       />
 
       <Text style={styles.label}>Fotos</Text>
-      <TouchableOpacity style={styles.imagesInput} onPress={() => {}}>
+      <View style={styles.selectedPhotosContainer}>
+        {photos.map((photo, index) => (
+          <Image key={index} style={styles.selectedPhoto} source={{ uri: photo }} />
+        ))}
+      </View>
+      <TouchableOpacity style={styles.photosInput} onPress={handleBrowsePhoto}>
         <Feather name="plus" size={24} color="#15B6D6" />
       </TouchableOpacity>
 
@@ -75,7 +101,7 @@ const OrphanageForm: FC = () => {
         <Text style={styles.label}>Atende final de semana?</Text>
         <Switch
           thumbColor="#fff"
-          trackColor={{ false: '#ccc', true: '#39CC83' }}
+          trackColor={{ false: '#ccc', true: '#39cc83' }}
           value={open_on_weekends}
           onValueChange={setOpenOnWeekends}
         />
@@ -100,7 +126,7 @@ const styles = StyleSheet.create({
     marginBottom: 32,
     paddingBottom: 24,
     borderBottomWidth: 0.8,
-    borderBottomColor: '#D3E2E6',
+    borderBottomColor: '#d3e2e6',
   },
 
   label: {
@@ -126,10 +152,22 @@ const styles = StyleSheet.create({
     textAlignVertical: 'top',
   },
 
-  imagesInput: {
+  selectedPhotosContainer: {
+    flexDirection: 'row',
+  },
+
+  selectedPhoto: {
+    width: 64,
+    height: 64,
+    borderRadius: 20,
+    marginBottom: 32,
+    marginRight: 8,
+  },
+
+  photosInput: {
     backgroundColor: 'rgba(255, 255, 255, 0.5)',
     borderStyle: 'dashed',
-    borderColor: '#96D2F0',
+    borderColor: '#96d2f0',
     borderWidth: 1.4,
     borderRadius: 20,
     height: 56,
@@ -157,7 +195,7 @@ const styles = StyleSheet.create({
   nextButtonText: {
     fontFamily: 'Nunito800',
     fontSize: 16,
-    color: '#FFF',
+    color: '#fff',
   },
 })
 
