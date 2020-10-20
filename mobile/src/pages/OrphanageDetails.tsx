@@ -20,8 +20,7 @@ interface Orphanage {
 }
 
 const OrphanageDetails: FC = () => {
-  const route = useRoute()
-  const orphanage = route.params as Orphanage
+  const orphanage = useRoute().params as Orphanage
 
   const handleOpenGoogleMaps = () => {
     Linking.openURL(`https://www.google.com/maps/dir/?api=1&destination=${orphanage.latitude},${orphanage.longitude}`)
