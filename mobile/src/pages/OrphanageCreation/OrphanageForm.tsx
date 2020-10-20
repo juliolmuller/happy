@@ -1,9 +1,10 @@
 import React, { FC, useState } from 'react'
 import { Image, ScrollView, StyleSheet, Switch, Text, TextInput, TouchableOpacity, View } from 'react-native'
-import { useRoute } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import { RectButton } from 'react-native-gesture-handler'
 import * as ImagePicker from 'expo-image-picker'
 import { Feather } from '@expo/vector-icons'
+import api from '../../services/api'
 
 interface OrphanageFormRouteParams {
   latitude: number
@@ -11,13 +12,15 @@ interface OrphanageFormRouteParams {
 }
 
 const OrphanageForm: FC = () => {
+  const { navigate } = useNavigation()
+
   const { latitude, longitude } = useRoute().params as OrphanageFormRouteParams
 
   const [name, setName] = useState('')
   const [about, setAbout] = useState('')
   const [instructions, setInstructions] = useState('')
-  const [opening_hours, setOpeningHours] = useState('')
-  const [open_on_weekends, setOpenOnWeekends] = useState(false)
+  const [openingHours, setOpeningHours] = useState('')
+  const [openOnWeekends, setOpenOnWeekends] = useState(false)
   const [photos, setPhotos] = useState<string[]>([])
 
   const handleBrowsePhoto = async () => {
@@ -39,16 +42,31 @@ const OrphanageForm: FC = () => {
     }
   }
 
-  const handleFormSubmit = () => {
-    console.log({
-      name,
-      latitude,
-      longitude,
-      about,
-      instructions,
-      opening_hours,
-      open_on_weekends,
-    })
+  const handleFormSubmit = async () => {
+    const formData = new FormData()
+
+    formData.append('latitude', String(latitude))
+    formData.append('longitude', String(longitude))
+    formData.append('name', name)
+    formData.append('about', about)
+    formData.append('instructions', instructions)
+    formData.append('opening_hours', openingHours)
+    formData.append('open_on_weekends', String(openOnWeekends))
+    photos.forEach((photo, index) => formData.append('photos', {
+      name: `photo-${index}.jpg`,
+      type: 'image/jpg',
+      uri: photo,
+    } as never))
+
+    try {
+      await api.post('/orphanages', formData)
+
+      navigate('OrphanagesMap')
+    } catch (error) {
+      // TODO: display validation errors
+      console.error(error, { ...error })
+      alert('Falha ao tentar salvar os dados. Tente novamente mais tarde.')
+    }
   }
 
   return (
@@ -93,7 +111,7 @@ const OrphanageForm: FC = () => {
       <Text style={styles.label}>Horario de visitas</Text>
       <TextInput
         style={styles.input}
-        value={opening_hours}
+        value={openingHours}
         onChangeText={setOpeningHours}
       />
 
@@ -102,7 +120,7 @@ const OrphanageForm: FC = () => {
         <Switch
           thumbColor="#fff"
           trackColor={{ false: '#ccc', true: '#39cc83' }}
-          value={open_on_weekends}
+          value={openOnWeekends}
           onValueChange={setOpenOnWeekends}
         />
       </View>
