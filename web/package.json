@@ -1,6 +1,8 @@
 {
   "name": "happy-web",
   "version": "1.0.0",
+  "license": "MIT",
+  "homepage": "https://happy-app-nlw.herokuapp.com/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
