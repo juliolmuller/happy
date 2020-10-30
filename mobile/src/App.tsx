@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+import { AppLoading } from 'expo'
 import { useFonts } from 'expo-font'
 import Routes from './routes'
 import {
@@ -10,7 +11,9 @@ import {
 const App: FC = () => {
   const [fontsLoaded] = useFonts({ Nunito600, Nunito700, Nunito800 })
 
-  return fontsLoaded ? <Routes /> : null
+  return fontsLoaded
+    ? <Routes />
+    : <AppLoading />
 }
 
 export default App
