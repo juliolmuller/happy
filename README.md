@@ -164,7 +164,7 @@ Besides, both v1.0 and v2.0 have their layouts available at **[Figma](http://fig
   - [ ] Automated tests (unit and E2E);
 - Server
   - [x] Set up linting tools;
-  - [ ] Escape uploaded photos names;
+  - [x] Escape uploaded photos names;
   - [ ] Photos count upload validation;
   - [ ] Make use of environmental variables for development;
   - [ ] Create authentication system;

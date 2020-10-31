@@ -4,9 +4,11 @@ import path from 'path'
 const storage = multer.diskStorage({
   destination: path.join(__dirname, '..', 'storage'),
   filename(req, file, callback) {
-    const fileName = `${Date.now()}_${file.originalname}`
+    const timestamp = Date.now()
+    const safeFileName = escape(file.originalname)
+    const uniqueFileName = `${timestamp}-${safeFileName}`
 
-    callback(null, fileName)
+    callback(null, uniqueFileName)
   },
 })
 
