@@ -144,10 +144,11 @@ Besides, both v1.0 and v2.0 have their layouts available at **[Figma](http://fig
   - [ ] Create form to update current user profile;
   - [ ] Create form to update existing orphanage;
   - [ ] Catch forms validation and display notification;
+  - [ ] Handle other HTTP calls errors;
   - [ ] Automated tests (unit and E2E);
 - Mobile
   - [x] Set up linting tools;
-  - [ ] Upgrade to React 17;
+  - [x] Upgrade to React 17;
   - [ ] Make use of environmental variables for development;
   - [x] Add splash screen;
   - [ ] Add onboarding screens;
@@ -162,6 +163,7 @@ Besides, both v1.0 and v2.0 have their layouts available at **[Figma](http://fig
   - [ ] Create form to update current user profile;
   - [ ] Create form to update existing orphanage;
   - [ ] Catch forms validation and display notification;
+  - [ ] Handle other HTTP calls errors;
   - [ ] Automated tests (unit and E2E);
 - Server
   - [x] Set up linting tools;
