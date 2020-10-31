@@ -2,11 +2,10 @@
   "name": "happy-server",
   "version": "1.0.1",
   "scripts": {
-    "dev": "ts-node-dev src/index.ts --transpile-only --ignore node_modules",
-    "development": "npm run dev",
     "typeorm": "ts-node-dev node_modules/typeorm/cli.js",
-    "migrations": "npm run typeorm -- migrations:run",
-    "migrations:fresh": "npm run typeorm -- schema:drop && npm run migrations",
+    "migrate": "npm run typeorm -- migrations:run",
+    "migrate:fresh": "npm run typeorm -- schema:drop && npm run migrate",
+    "start": "ts-node-dev src/index.ts --transpile-only --ignore node_modules",
     "build": "rm -rf build/ && tsc -p ."
   },
   "dependencies": {

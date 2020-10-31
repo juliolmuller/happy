@@ -74,8 +74,9 @@ Make sure to have **Node.js 10+** installed in your machine and its **npm** avai
 ```bash
   # Server
 $ cd server
-$ npm run migrations   # setup database schema
-$ npm run dev          # start development Server
+$ npm run migrate   # setup database schema
+$ npm start         # start development Server
+$ npm run build     # transpile source files for deployment
 
   # Web App
 $ cd web
