@@ -1,10 +1,10 @@
-import React, { ReactElement } from 'react'
+import React, { FC } from 'react'
 import { useHistory } from 'react-router-dom'
 import { FiArrowLeft } from 'react-icons/fi'
 import marker from '../images/logo-icon.svg'
 import '../styles/components/navbar.css'
 
-function NavBar(): ReactElement {
+const NavBar: FC = () => {
   const { push } = useHistory()
 
   return (

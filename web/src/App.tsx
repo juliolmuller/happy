@@ -1,12 +1,10 @@
-import React, { ReactElement } from 'react'
+import React, { FC } from 'react'
 import Routes from './routes'
 import 'leaflet/dist/leaflet.css'
 import './styles/app.css'
 
-function App(): ReactElement {
-  return (
-    <Routes />
-  )
-}
+const App: FC = () => (
+  <Routes />
+)
 
 export default App

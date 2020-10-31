@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, ReactElement, useState } from 'react'
+import React, { ChangeEvent, FC, FormEvent, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { LeafletMouseEvent } from 'leaflet'
 import { Map, Marker, TileLayer } from 'react-leaflet'
@@ -8,7 +8,7 @@ import NavBar from '../components/NavBar'
 import api from '../services/api'
 import '../styles/pages/orphanage-form.css'
 
-function OrphanageForm(): ReactElement {
+const OrphanageForm: FC = () => {
   const history = useHistory()
 
   const [latitude, setLatitude] = useState(0)

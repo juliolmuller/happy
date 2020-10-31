@@ -1,4 +1,4 @@
-import React, { ReactElement, useState, useEffect } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { FaWhatsapp } from 'react-icons/fa'
 import { FiClock, FiInfo } from 'react-icons/fi'
@@ -25,7 +25,7 @@ interface OrphanageDetailsParams {
   id: string
 }
 
-function OrphanageDetails(): ReactElement {
+const OrphanageDetails: FC = () => {
   const routeParams = useParams<OrphanageDetailsParams>()
   const [orphanage, setOrphanage] = useState<Orphanage>()
   const [activeImage, setActiveImage] = useState(0)
