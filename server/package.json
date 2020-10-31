@@ -1,6 +1,8 @@
 {
   "name": "happy-server",
   "version": "1.0.1",
+  "private": true,
+  "license": "MIT",
   "scripts": {
     "typeorm": "ts-node-dev node_modules/typeorm/cli.js",
     "migrate": "npm run typeorm -- migrations:run",
