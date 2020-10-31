@@ -1,4 +1,4 @@
-import { Express, Request, Response } from 'express'
+import { Express, RequestHandler } from 'express'
 import { getRepository } from 'typeorm'
 import { StatusCodes } from 'http-status-codes'
 import * as Yup from 'yup'
@@ -7,14 +7,14 @@ import orphanageView from '../views/orphanagesView'
 
 const relations = ['photos']
 
-async function index(req: Request, res: Response): Promise<void> {
+const index: RequestHandler = async (req, res) => {
   const orphanageRepository = getRepository(Orphanage)
   const orphanages = await orphanageRepository.find({ relations })
 
   res.status(StatusCodes.OK).json(orphanageView.renderMany(orphanages))
 }
 
-async function show(req: Request, res: Response): Promise<void> {
+const show: RequestHandler = async (req, res) => {
   const { id } = req.params
   const orphanageRepository = getRepository(Orphanage)
   const orphanage = await orphanageRepository.findOneOrFail(id, { relations })
@@ -22,7 +22,7 @@ async function show(req: Request, res: Response): Promise<void> {
   res.status(StatusCodes.OK).json(orphanageView.render(orphanage))
 }
 
-async function store(req: Request, res: Response): Promise<void> {
+const store: RequestHandler = async (req, res) => {
   const uploadedFiles = req.files as Express.Multer.File[]
   const orphanageRepository = getRepository(Orphanage)
 
@@ -41,6 +41,7 @@ async function store(req: Request, res: Response): Promise<void> {
     name: Yup.string().required(),
     latitude: Yup.number().required(),
     longitude: Yup.number().required(),
+    // eslint-disable-next-line no-magic-numbers
     about: Yup.string().required().max(300),
     instructions: Yup.string().required(),
     openingHours: Yup.string().required(),

@@ -18,7 +18,9 @@ module.exports = {
     ecmaVersion: 2020,
   },
   rules: {
+    'camelcase': ['error', { allow: ['opening_hours', 'open_on_weekends'] }],
+    'arrow-body-style': 'off',
     'no-console': 'off',
-    'no-magic-numbers': ["error", { "ignore": [3030] }],
+    'no-magic-numbers': ['error', { ignore: [3030] }],
   },
 }

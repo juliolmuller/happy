@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express'
+import { ErrorRequestHandler } from 'express'
 import { ReasonPhrases, StatusCodes } from 'http-status-codes'
 import { ValidationError } from 'yup'
 
@@ -7,7 +7,7 @@ interface ValidationErrors {
 }
 
 // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-function handler(error: Error, _req: Request, res: Response, _next: NextFunction): void {
+const handler: ErrorRequestHandler = (error, _req, res, _next) => {
   if (error instanceof ValidationError) {
     const errors: ValidationErrors = {}
 

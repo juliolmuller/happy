@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import Orphanage from '../models/Orphanage'
 import photoView, { PhotoView } from './photoView'
 
@@ -14,7 +13,7 @@ export interface OrphanageView {
   photos: PhotoView[]
 }
 
-export function render(orphanage: Orphanage): OrphanageView {
+export const render = (orphanage: Orphanage): OrphanageView => {
   return {
     id: orphanage.id,
     name: orphanage.name,
@@ -28,8 +27,8 @@ export function render(orphanage: Orphanage): OrphanageView {
   }
 }
 
-export function renderMany(orphanages: Orphanage[]): OrphanageView[] {
-  return orphanages.map((orphanage) => render(orphanage))
+export const renderMany = (orphanages: Orphanage[]): OrphanageView[] => {
+  return orphanages.map(render)
 }
 
 export default { render, renderMany }

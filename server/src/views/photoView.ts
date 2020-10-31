@@ -6,22 +6,22 @@ export interface PhotoView {
   url: string
 }
 
-function storageURL(fileName: string): string {
+const storageURL = (fileName: string) => {
   const appRoot = process.env.APP_ROOT || 'http://localhost'
   const port = process.env.PORT || 3030
 
-  return `${appRoot}:${port}/storage/${fileName}`
+  return `${appRoot}:${port}/photos/${fileName}`
 }
 
-function render(photo: Photo): PhotoView {
+const render = (photo: Photo): PhotoView => {
   return {
     id: photo.id,
     url: storageURL(photo.path),
   }
 }
 
-function renderMany(photos: Photo[]): PhotoView[] {
-  return photos.map((photo) => render(photo))
+const renderMany = (photos: Photo[]): PhotoView[] => {
+  return photos.map(render)
 }
 
 export default { render, renderMany }

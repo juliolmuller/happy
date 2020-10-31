@@ -12,7 +12,7 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 app.use(routes)
-app.use('/storage', express.static(path.join(__dirname, '..', 'storage')))
+app.use('/photos', express.static(path.join(__dirname, '..', 'storage')))
 app.use(errorHandler)
 
 app.listen(port, () => {
