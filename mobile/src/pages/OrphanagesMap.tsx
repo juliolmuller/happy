@@ -20,9 +20,10 @@ const OrphanagesMap: FC = () => {
   const [orphanages, setOrphanages] = useState<Orphanage[]>([])
 
   useFocusEffect(() => {
-    api.get('/orphanages').then((response) => {
-      setOrphanages(response.data)
-    })
+    api.get('/orphanages')
+      .then((response) => setOrphanages(response.data))
+      // TODO: handle fetching error
+      .catch((error) => console.error(error.message))
   })
 
   return (
