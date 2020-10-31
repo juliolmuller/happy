@@ -6,7 +6,8 @@
     "development": "npm run dev",
     "typeorm": "ts-node-dev node_modules/typeorm/cli.js",
     "migrations": "npm run typeorm -- migrations:run",
-    "migrations:fresh": "npm run typeorm -- schema:drop && npm run migrations"
+    "migrations:fresh": "npm run typeorm -- schema:drop && npm run migrations",
+    "build": "rm -rf build/ && tsc -p ."
   },
   "dependencies": {
     "cors": "^2.8.5",
