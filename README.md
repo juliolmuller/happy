@@ -129,11 +129,11 @@ Besides, both v1.0 and v2.0 have their layouts available at **[Figma](http://fig
 
 - Web
   - [x] Set up linting tools;
-  - [ ] Upgrade to React 17;
+  - [x] Upgrade to React 17;
+  - [ ] Allow append and delete of photos on orphanage form;
   - [ ] Add loading animations;
   - [ ] Track user geo-location;
   - [ ] Add other orphanage information: address and phone number;
-  - [ ] Allow append and delete of photos on orphanage form;
   - [ ] Create search mechanism at the map page;
   - [ ] Do not allow real-time display new orphanage. Await service review;
   - [ ] Create form for logging into the service;
