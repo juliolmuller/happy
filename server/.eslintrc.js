@@ -18,7 +18,7 @@ module.exports = {
     ecmaVersion: 2020,
   },
   rules: {
-    'camelcase': ['error', { allow: ['opening_hours', 'open_on_weekends'] }],
+    'camelcase': ['error', { allow: ['purge_dotenv', 'opening_hours', 'open_on_weekends'] }],
     'arrow-body-style': 'off',
     'no-console': 'off',
   },

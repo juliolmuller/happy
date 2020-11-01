@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import Photo from '../models/Photo'
 
 export interface PhotoView {
@@ -7,8 +6,8 @@ export interface PhotoView {
 }
 
 const storageURL = (fileName: string) => {
-  const appRoot = process.env.APP_ROOT || 'http://localhost'
-  const port = process.env.PORT || 3030
+  const appRoot = process.env.APP_ROOT
+  const port = process.env.PORT
 
   return `${appRoot}:${port}/photos/${fileName}`
 }
