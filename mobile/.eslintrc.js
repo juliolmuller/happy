@@ -1,5 +1,8 @@
 module.exports = {
   root: true,
+  env: {
+    node: true
+  },
   extends: [
     '@lacussoft/standard',
     'plugin:@typescript-eslint/recommended',
@@ -16,7 +19,7 @@ module.exports = {
     },
   },
   rules: {
-    'camelcase': ['error', {allow: ['opening_hours', 'open_on_weekends']}],
+    'camelcase': ['error', {allow: ['purge_dotenv', 'opening_hours', 'open_on_weekends']}],
     'no-use-before-define': 'off',
     'object-curly-newline': ['error', { ImportDeclaration: { multiline: true, minProperties: 9 } }],
     'operator-linebreak': ['error', 'before', { 'overrides': { '&&': 'after' } }],
