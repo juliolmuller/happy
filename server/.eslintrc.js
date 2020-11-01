@@ -21,6 +21,5 @@ module.exports = {
     'camelcase': ['error', { allow: ['opening_hours', 'open_on_weekends'] }],
     'arrow-body-style': 'off',
     'no-console': 'off',
-    'no-magic-numbers': ['error', { ignore: [3030] }],
   },
 }
