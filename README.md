@@ -168,8 +168,8 @@ Besides, both v1.0 and v2.0 have their layouts available at **[Figma](http://fig
 - Server
   - [x] Set up linting tools;
   - [x] Escape uploaded photos names;
+  - [x] Make use of environmental variables;
   - [ ] Photos count upload validation;
-  - [ ] Make use of environmental variables for development;
   - [ ] Create authentication system;
   - [ ] Automated tests;
   - [ ] Deploy the application;
