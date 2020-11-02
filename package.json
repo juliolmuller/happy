@@ -1,0 +1,12 @@
+{
+  "name": "happy-config",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "devDependencies": {
+    "colors": "^1.4.0",
+    "envfile": "^6.14.0",
+    "prompts": "^2.4.0"
+  },
+  "dependencies": {}
+}
