@@ -69,22 +69,29 @@ Application developed during the third edition of [Next Level Week](https://next
 
 ## :hammer: Setting up the Environment
 
-Make sure to have **Node.js 10+** installed in your machine and its **npm** available in the command line, then use the following routines to run each part of the project:
+Make sure to have **Node.js 10+** installed in your machine and its `node` and `npm` shortcuts available through the command line, then use the following routines to run each part of the project:
 
 ```bash
+  # at project root (optional)
+$ npm install          # install required dependencies
+$ node config.js       # Creates ".env*" files and configure local network URL to be used
+
   # Server
 $ cd server
-$ npm run migrate   # setup database schema
-$ npm start         # start development Server
-$ npm run build     # transpile source files for deployment
+$ npm install          # install required dependencies
+$ npm run migrate      # setup database schema
+$ npm start            # start development Server
+$ npm run build        # transpile source files for deployment
 
   # Web App
 $ cd web
+$ npm install          # install required dependencies
 $ npm start            # start development server
 $ npm run build        # build files for production
 
   # Mobile App
 $ cd mobile
+$ npm install          # install required dependencies
 $ npm start            # build and serve the application via Expo mobile app
 ```
 
@@ -149,7 +156,7 @@ Besides, both v1.0 and v2.0 have their layouts available at **[Figma](http://fig
 - Mobile
   - [x] Set up linting tools;
   - [x] Upgrade to React 17;
-  - [ ] Make use of environmental variables for development;
+  - [x] Make use of environment variables for development;
   - [x] Add splash screen;
   - [ ] Add onboarding screens;
   - [ ] Add loading animations;
@@ -168,7 +175,7 @@ Besides, both v1.0 and v2.0 have their layouts available at **[Figma](http://fig
 - Server
   - [x] Set up linting tools;
   - [x] Escape uploaded photos names;
-  - [x] Make use of environmental variables;
+  - [x] Make use of environment variables;
   - [ ] Photos count upload validation;
   - [ ] Create authentication system;
   - [ ] Automated tests;
