@@ -6,10 +6,7 @@ export interface PhotoView {
 }
 
 const storageURL = (fileName: string) => {
-  const appRoot = process.env.APP_ROOT
-  const port = process.env.PORT
-
-  return `${appRoot}:${port}/photos/${fileName}`
+  return `${process.env.APP_ROOT}/photos/${fileName}`
 }
 
 const render = (photo: Photo): PhotoView => {

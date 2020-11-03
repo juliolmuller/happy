@@ -9,7 +9,7 @@ import './database/connection'
 
 const config = dotenv.config({ purge_dotenv: true })
 
-if (config.error) {
+if (config.error && process.env.NODE_ENV !== 'production') {
   throw config.error
 }
 
@@ -26,5 +26,5 @@ app.use(errorHandler)
 app.listen(process.env.PORT, () => {
   console.log('Application running at')
   console.log(`    http://localhost:${process.env.PORT}`)
-  console.log(`    ${process.env.APP_ROOT}:${process.env.PORT}`)
+  console.log(`    ${process.env.APP_ROOT}`)
 })

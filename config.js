@@ -73,7 +73,7 @@ function configure(dirName, makeEnvLocal, makeEnvProduction, varOverwrite) {
 
 function configureServer(ip) {
   configure('server', true, false, ip && {
-    APP_ROOT: `http://${ip}`,
+    APP_ROOT: `http://${ip}:${SERVER_PORT}`,
     PORT: SERVER_PORT
   })
 }
