@@ -177,9 +177,10 @@ Besides, both v1.0 and v2.0 have their layouts available at **[Figma](http://fig
   - [x] Escape uploaded photos names;
   - [x] Make use of environment variables;
   - [ ] Photos count upload validation;
+  - [ ] Switch SQLite to PostgreSQL;
   - [ ] Create authentication system;
   - [ ] Automated tests;
-  - [ ] Deploy the application;
+  - [x] Deploy the application;
 
 ---
 
