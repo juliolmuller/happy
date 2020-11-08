@@ -177,10 +177,12 @@ Besides, both v1.0 and v2.0 have their layouts available at **[Figma](http://fig
   - [x] Escape uploaded photos names;
   - [x] Make use of environment variables;
   - [ ] Photos count upload validation;
-  - [ ] Switch SQLite to PostgreSQL;
+  - [x] Switch SQLite to PostgreSQL;
   - [ ] Create authentication system;
   - [ ] Automated tests;
   - [x] Deploy the application;
+  - [ ] PostgreSQL plugin at Heroku app;
+  - [ ] F0ile storage connection at Heroku app;
 
 ---
 
