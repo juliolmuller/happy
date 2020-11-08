@@ -22,14 +22,14 @@ export class createTableOrphanages1602719974861 implements MigrationInterface {
         },
         {
           name: 'latitude',
-          type: 'decimal',
-          precision: 2,
+          type: 'numeric',
+          precision: 13,
           scale: 10,
         },
         {
           name: 'longitude',
-          type: 'decimal',
-          precision: 2,
+          type: 'numeric',
+          precision: 13,
           scale: 10,
         },
         {
