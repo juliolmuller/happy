@@ -5,6 +5,8 @@ import * as Yup from 'yup'
 import Orphanage from '../models/Orphanage'
 import orphanageView from '../views/orphanagesView'
 
+type S3File = Express.Multer.File & { key: string }
+
 const relations = ['photos']
 
 const index: RequestHandler = async (req, res) => {
@@ -23,8 +25,10 @@ const show: RequestHandler = async (req, res) => {
 }
 
 const store: RequestHandler = async (req, res) => {
-  const uploadedFiles = req.files as Express.Multer.File[]
+  const uploadedFiles = req.files as S3File[]
   const orphanageRepository = getRepository(Orphanage)
+
+  console.log(uploadedFiles)
 
   const data = {
     name: req.body.name,
@@ -34,7 +38,7 @@ const store: RequestHandler = async (req, res) => {
     instructions: req.body.instructions,
     openingHours: req.body.opening_hours,
     openOnWeekends: req.body.open_on_weekends === 'true',
-    photos: uploadedFiles.map((photo) => ({ path: photo.filename })),
+    photos: uploadedFiles.map((photo) => ({ path: photo.key || photo.filename })),
   }
 
   const schema = Yup.object().shape({
