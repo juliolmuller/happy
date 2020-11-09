@@ -79,7 +79,7 @@ $ node config.js       # Creates ".env*" files and configure local network URL t
   # Server
 $ cd server
 $ npm install          # install required dependencies
-$ npm run migrate      # setup database schema
+$ npm run migration    # setup database schema
 $ npm start            # start development Server
 $ npm run build        # transpile source files for deployment
 
