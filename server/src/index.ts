@@ -1,4 +1,4 @@
-import dotenv from 'dotenv-flow'
+import './config'
 import path from 'path'
 import express from 'express'
 import 'express-async-errors'
@@ -7,12 +7,6 @@ import morgan from 'morgan'
 import routes from './routes'
 import errorHandler from './errors/handler'
 import './database/connection'
-
-const config = dotenv.config({ purge_dotenv: true })
-
-if (config.error && process.env.NODE_ENV !== 'production') {
-  throw config.error
-}
 
 const app = express()
 
