@@ -176,13 +176,15 @@ Besides, both v1.0 and v2.0 have their layouts available at **[Figma](http://fig
   - [x] Set up linting tools;
   - [x] Escape uploaded photos names;
   - [x] Make use of environment variables;
+  - [ ] Photos compression at upload;
   - [ ] Photos count upload validation;
   - [x] Switch SQLite to PostgreSQL;
   - [ ] Create authentication system;
   - [ ] Automated tests;
+  - [ ] Customized CORS configuration;
   - [x] Deploy the application;
-  - [ ] PostgreSQL plugin at Heroku app;
-  - [ ] F0ile storage connection at Heroku app;
+  - [x] PostgreSQL plugin at Heroku app;
+  - [x] Bucket at AWS S3 for Storage;
 
 ---
 
