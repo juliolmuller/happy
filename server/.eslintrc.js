@@ -7,7 +7,7 @@ module.exports = {
   extends: [
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
-    '@lacussoft/standard',
+    '@lacussoft',
   ],
   plugins: [
     '@typescript-eslint',
