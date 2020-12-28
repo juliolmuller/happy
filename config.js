@@ -5,9 +5,9 @@ const path = require('path')
 const fs = require('fs')
 const os = require('os')
 
-const GLOBAL_ENV = '.env'
-const LOCAL_ENV = '.env.local'
-const PRODUCTION_ENV = '.env.production.local'
+const REFERENCE_ENV = '.env.example'
+const DEVELOPMENT_ENV = '.env'
+const PRODUCTION_ENV = '.env.production'
 const SERVER_PORT = 3030
 
 function getIPs() {
@@ -50,7 +50,7 @@ async function selectIP(...ips) {
 function createEnvFile(fullPath, fileName, overwriteVars = {}) {
   const targetFile = path.join(fullPath, fileName)
   const isUpdating = fs.existsSync(targetFile)
-  const sourceFile = isUpdating ? targetFile : path.join(fullPath, GLOBAL_ENV)
+  const sourceFile = isUpdating ? targetFile : path.join(fullPath, REFERENCE_ENV)
   const envVars = fs.readFileSync(sourceFile)
   const parsedEnvVars = envfile.parse(envVars)
   const finalEnv = envfile.stringify({ ...parsedEnvVars, ...overwriteVars })
@@ -62,12 +62,12 @@ function createEnvFile(fullPath, fileName, overwriteVars = {}) {
     : console.log(`    File "${fileName}" has been created in "${fullPath}".`)
 }
 
-function configure(dirName, makeEnvLocal, makeEnvProduction, varOverwrite) {
+function configure(dirName, makeEnvDevelopment, makeEnvProduction, varOverwrite) {
   console.log('\n', colors.inverse(` ${dirName.toUpperCase()} `))
 
   const fullPath = path.join(__dirname, dirName)
 
-  makeEnvLocal && createEnvFile(fullPath, LOCAL_ENV, varOverwrite)
+  makeEnvDevelopment && createEnvFile(fullPath, DEVELOPMENT_ENV, varOverwrite)
   makeEnvProduction && createEnvFile(fullPath, PRODUCTION_ENV)
 }
 

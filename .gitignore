@@ -9,10 +9,8 @@ node_modules/
 build/
 web-build/
 
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
+.env*
+!.env.example
+.eslintcache
 *.log
 *.sqlite
