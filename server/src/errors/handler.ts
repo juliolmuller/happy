@@ -12,7 +12,9 @@ const handler: ErrorRequestHandler = (error, _req, res, _next) => {
     const errors: ValidationErrors = {}
 
     error.inner.forEach((err) => {
-      errors[err.path] = err.errors
+      if (err.path) {
+        errors[err.path] = err.errors
+      }
     })
 
     res
