@@ -2,9 +2,12 @@ module.exports = {
   root: true,
   extends: [
     'react-app',
-    '@lacussoft/standard',
+    '@lacussoft',
     'plugin:@typescript-eslint/recommended',
     'plugin:jest/recommended',
+  ],
+  ignorePatterns: [
+    'build/',
   ],
   plugins: [
     'react',
@@ -20,9 +23,9 @@ module.exports = {
     },
   },
   rules: {
-    'camelcase': ['error', {allow: ['opening_hours', 'open_on_weekends']}],
+    'camelcase': ['error', { allow: ['opening_hours', 'open_on_weekends'] }],
     'no-use-before-define': 'off',
-    'operator-linebreak': ['error', 'before', { 'overrides': { '&&': 'after' } }],
+    'operator-linebreak': ['error', 'before', { overrides: { '&&': 'after' } }],
     '@typescript-eslint/no-use-before-define': 'off',
   },
 }
