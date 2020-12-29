@@ -8,8 +8,15 @@ import NavBar from '../components/NavBar'
 import api from '../services/api'
 import '../styles/pages/orphanage-form.css'
 
+const {
+  REACT_APP_DEFAULT_LATITUDE: DEFAULT_LATITUDE,
+  REACT_APP_DEFAULT_LONGITUDE: DEFAULT_LONGITUDE,
+  REACT_APP_MAPBOX_URL: MAPBOX_URL,
+  REACT_APP_MAPBOX_TOKEN: MAPBOX_TOKEN,
+} = process.env
+
 const OrphanageForm: FC = () => {
-  const history = useHistory()
+  const router = useHistory()
 
   const [latitude, setLatitude] = useState(0)
   const [longitude, setLongitude] = useState(0)
@@ -39,7 +46,7 @@ const OrphanageForm: FC = () => {
       const orphanageId = response.data.id
 
       alert('Cadastro realizado com sucesso!')
-      history.push(`/orphanages/${orphanageId}`)
+      router.push(`/orphanages/${orphanageId}`)
     } catch (error) {
       // TODO: display validation errors
       console.error(error, { ...error })
@@ -56,12 +63,12 @@ const OrphanageForm: FC = () => {
             <legend>Dados</legend>
 
             <Map
-              center={[-25.4321773, -49.2884007]}
+              center={[Number(DEFAULT_LATITUDE), Number(DEFAULT_LONGITUDE)]}
               style={{ width: '100%', height: 280 }}
               zoom={15}
               onclick={handleMapCLick}
             >
-              <TileLayer url={`${process.env.REACT_APP_MAPBOX_URL}?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`} />
+              <TileLayer url={`${MAPBOX_URL}?access_token=${MAPBOX_TOKEN}`} />
 
               {latitude && longitude &&
                 <Marker icon={mapIcon} position={[latitude, longitude]} interactive={false} />

@@ -7,6 +7,13 @@ import marker from '../images/logo-icon.svg'
 import api from '../services/api'
 import '../styles/pages/orphanages-map.css'
 
+const {
+  REACT_APP_DEFAULT_LATITUDE: DEFAULT_LATITUDE,
+  REACT_APP_DEFAULT_LONGITUDE: DEFAULT_LONGITUDE,
+  REACT_APP_MAPBOX_URL: MAPBOX_URL,
+  REACT_APP_MAPBOX_TOKEN: MAPBOX_TOKEN,
+} = process.env
+
 interface Orphanage {
   id: number
   name: string
@@ -40,12 +47,11 @@ const OrphanagesMap: FC = () => {
       </aside>
 
       <Map
-        // eslint-disable-next-line no-magic-numbers
-        center={[-25.4321773, -49.2884007]}
+        center={[Number(DEFAULT_LATITUDE), Number(DEFAULT_LONGITUDE)]}
         zoom={13}
         style={{ width: '100%', height: '100%' }}
       >
-        <TileLayer url={`${process.env.REACT_APP_MAPBOX_URL}?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`} />
+        <TileLayer url={`${MAPBOX_URL}?access_token=${MAPBOX_TOKEN}`} />
 
         {orphanages.map((orphanage) => (
           <Marker key={orphanage.id} icon={mapIcon} position={[orphanage.latitude, orphanage.longitude]}>
