@@ -9,8 +9,8 @@ module.exports = {
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
   ],
-  ignorePattern: [
-    'build/*',
+  ignorePatterns: [
+    'build/',
   ],
   plugins: [
     '@typescript-eslint',
