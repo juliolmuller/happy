@@ -53,17 +53,10 @@ const options: MulterOptions = {
   storage: storages[storage](),
   limits: { fileSize: MAX_FILE_SIZE },
   fileFilter(_req, file, callback) {
-    const allowedMimeTypes = [
-      'image/jpeg',
-      'image/pjpeg',
-      'image/png',
-      'image/gif',
-    ]
-
-    if (allowedMimeTypes.includes(file.mimetype)) {
+    if (file.mimetype.match(/image\/[a-z-]+/i)) {
       callback(null, true)
     } else {
-      callback(new Error('Invalid file type.'))
+      callback(new Error(`Invalid file type: "${file.mimetype}".`))
     }
   },
 }
