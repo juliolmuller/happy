@@ -27,9 +27,6 @@ const show: RequestHandler = async (req, res) => {
 const store: RequestHandler = async (req, res) => {
   const uploadedFiles = req.files as S3File[]
   const orphanageRepository = getRepository(Orphanage)
-
-  console.log(uploadedFiles)
-
   const data = {
     name: req.body.name,
     latitude: req.body.latitude,
