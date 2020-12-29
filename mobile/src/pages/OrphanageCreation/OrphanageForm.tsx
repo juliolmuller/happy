@@ -24,7 +24,7 @@ const OrphanageForm: FC = () => {
   const [photos, setPhotos] = useState<string[]>([])
 
   const handleBrowsePhoto = async () => {
-    const { status } = await ImagePicker.requestCameraRollPermissionsAsync()
+    const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync()
 
     if (status !== 'granted') {
       alert('Ops! Você precisa fornecer uma foto para cadastra o orfanato.')
