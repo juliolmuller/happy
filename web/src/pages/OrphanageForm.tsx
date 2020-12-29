@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC, FormEvent, useState } from 'react'
+import { ChangeEvent, FC, FormEvent, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { LeafletMouseEvent } from 'leaflet'
 import { Map, Marker, TileLayer } from 'react-leaflet'

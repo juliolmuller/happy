@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FiArrowRight, FiPlus } from 'react-icons/fi'
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet'
