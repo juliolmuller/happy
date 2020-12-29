@@ -16,11 +16,11 @@ export default {
     },
     orientation: 'portrait',
     platforms: ['android', 'ios'],
-    icon: './src/images/icon.png',
+    icon: './src/images/favicon.png',
     splash: {
       backgroundColor: '#15c3d6',
       image: './src/images/splash.png',
-      resizeMode: 'cover',
+      resizeMode: 'contain',
     },
     assetBundlePatterns: [
       '**/*',
