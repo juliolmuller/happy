@@ -6,8 +6,11 @@
   "author": "Julio L. Muller",
   "scripts": {
     "typeorm": "tsnd node_modules/typeorm/cli.js",
-    "migration": "npm run typeorm -- migration:run",
-    "migration:fresh": "npm run typeorm -- schema:drop && npm run migration",
+    "seeds": "tsnd src/database/seeds/index.ts",
+    "migrations": "npm run typeorm -- migration:run",
+    "migrations:seed": "npm run migrations && npm run seeds",
+    "migrations:reset": "npm run typeorm -- schema:drop && npm run migrations",
+    "migrations:reset:seed": "npm run migrations:reset && npm run seeds",
     "start": "tsnd src/index.ts --clear --respawn --transpile-only --ignore node_modules",
     "build": "rm -rf build/ && tsc -p ."
   },
