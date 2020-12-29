@@ -13,7 +13,6 @@ interface OrphanageFormRouteParams {
 
 const OrphanageForm: FC = () => {
   const { navigate } = useNavigation()
-
   const { latitude, longitude } = useRoute().params as OrphanageFormRouteParams
 
   const [name, setName] = useState('')
@@ -22,6 +21,7 @@ const OrphanageForm: FC = () => {
   const [openingHours, setOpeningHours] = useState('')
   const [openOnWeekends, setOpenOnWeekends] = useState(false)
   const [photos, setPhotos] = useState<string[]>([])
+  const submissionAllowed = Boolean(name && about && instructions && openingHours && photos.length)
 
   const handleBrowsePhoto = async () => {
     const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync()
@@ -125,8 +125,12 @@ const OrphanageForm: FC = () => {
         />
       </View>
 
-      <RectButton style={styles.nextButton} onPress={handleFormSubmit}>
-        <Text style={styles.nextButtonText}>Cadastrar</Text>
+      <RectButton
+        style={[styles.submitBtn, submissionAllowed ? styles.btnEnabled : styles.btnDisabled]}
+        onPress={handleFormSubmit}
+        enabled={submissionAllowed}
+      >
+        <Text style={styles.SubmitBtnText}>Cadastrar</Text>
       </RectButton>
     </ScrollView>
   )
@@ -201,8 +205,7 @@ const styles = StyleSheet.create({
     marginTop: 16,
   },
 
-  nextButton: {
-    backgroundColor: '#15c3d6',
+  submitBtn: {
     borderRadius: 20,
     justifyContent: 'center',
     alignItems: 'center',
@@ -210,7 +213,15 @@ const styles = StyleSheet.create({
     marginTop: 32,
   },
 
-  nextButtonText: {
+  btnEnabled: {
+    backgroundColor: '#15c3d6',
+  },
+
+  btnDisabled: {
+    backgroundColor: '#ccc',
+  },
+
+  SubmitBtnText: {
     fontFamily: 'Nunito800',
     fontSize: 16,
     color: '#fff',
