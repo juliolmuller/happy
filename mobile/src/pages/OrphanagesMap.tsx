@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useCallback, useState } from 'react'
 import { Dimensions, StyleSheet, Text, View } from 'react-native'
 import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import MapView, { Callout, Marker, PROVIDER_GOOGLE } from 'react-native-maps'
@@ -16,15 +16,22 @@ interface Orphanage {
 
 const OrphanagesMap: FC = () => {
   const { navigate } = useNavigation()
-
   const [orphanages, setOrphanages] = useState<Orphanage[]>([])
 
-  useFocusEffect(() => {
-    api.get('/orphanages')
-      .then((response) => setOrphanages(response.data))
-      // TODO: handle fetching error
-      .catch((error) => console.error(error.message))
-  })
+  const fetchOrphanages = async () => {
+    try {
+      const { data } = await api.get('/orphanages')
+      setOrphanages(data)
+    } catch (err) {
+      alert(err.message)
+    }
+  }
+
+  useFocusEffect(
+    useCallback(() => {
+      fetchOrphanages()
+    }, []),
+  )
 
   return (
     <View style={styles.container}>
