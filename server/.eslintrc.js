@@ -5,9 +5,9 @@ module.exports = {
     es6: true,
   },
   extends: [
+    '@lacussoft',
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
-    '@lacussoft',
   ],
   plugins: [
     '@typescript-eslint',
@@ -18,7 +18,7 @@ module.exports = {
     ecmaVersion: 2020,
   },
   rules: {
-    'camelcase': ['error', { allow: ['purge_dotenv', 'opening_hours', 'open_on_weekends'] }],
+    'camelcase': ['error', { allow: ['purge_dotenv', 'opening_hours', 'open_on_weekends', 'orphanage_id'] }],
     'arrow-body-style': 'off',
     'no-console': 'off',
   },
