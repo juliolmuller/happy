@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { FaWhatsapp } from 'react-icons/fa'
 import { FiClock, FiInfo } from 'react-icons/fi'
-import { Map, Marker, TileLayer } from 'react-leaflet'
+import { MapContainer, Marker, TileLayer } from 'react-leaflet'
 import mapIcon from '../components/utils/mapIcon'
 import NavBar from '../components/NavBar'
 import api from '../services/api'
@@ -69,10 +69,10 @@ const OrphanageDetails: FC = () => {
             ))}
 
             <div className="map-container">
-              <Map
+              <MapContainer
+                style={{ width: '100%', height: 280 }}
                 center={[orphanage.latitude, orphanage.longitude]}
                 zoom={16}
-                style={{ width: '100%', height: 280 }}
                 dragging={false}
                 touchZoom={false}
                 zoomControl={false}
@@ -81,7 +81,7 @@ const OrphanageDetails: FC = () => {
               >
                 <TileLayer url={`${process.env.REACT_APP_MAPBOX_URL}?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`} />
                 <Marker interactive={false} icon={mapIcon} position={[orphanage.latitude, orphanage.longitude]} />
-              </Map>
+              </MapContainer>
 
               <footer>
                 <a target="_blank" rel="noopener noreferrer" href={`https://www.google.com/maps/dir/?api=1&destination=${orphanage.latitude},${orphanage.longitude}`}>

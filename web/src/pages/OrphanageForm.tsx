@@ -1,9 +1,10 @@
 import { ChangeEvent, FC, FormEvent, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { LeafletMouseEvent } from 'leaflet'
-import { Map, Marker, TileLayer } from 'react-leaflet'
+import { MapContainer, Marker, TileLayer } from 'react-leaflet'
 import { FiPlus } from 'react-icons/fi'
 import mapIcon from '../components/utils/mapIcon'
+import MapContext from '../components/MapContext'
 import NavBar from '../components/NavBar'
 import api from '../services/api'
 import '../styles/pages/orphanage-form.css'
@@ -62,18 +63,19 @@ const OrphanageForm: FC = () => {
           <fieldset>
             <legend>Dados</legend>
 
-            <Map
-              center={[Number(DEFAULT_LATITUDE), Number(DEFAULT_LONGITUDE)]}
+            <MapContainer
               style={{ width: '100%', height: 280 }}
+              center={[Number(DEFAULT_LATITUDE), Number(DEFAULT_LONGITUDE)]}
               zoom={15}
-              onclick={handleMapCLick}
             >
+              <MapContext onClick={handleMapCLick} />
+
               <TileLayer url={`${MAPBOX_URL}?access_token=${MAPBOX_TOKEN}`} />
 
               {latitude && longitude &&
                 <Marker icon={mapIcon} position={[latitude, longitude]} interactive={false} />
               }
-            </Map>
+            </MapContainer>
 
             <div className="input-block">
               <label htmlFor="name">Nome</label>

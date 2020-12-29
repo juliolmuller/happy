@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FiArrowRight, FiPlus } from 'react-icons/fi'
-import { Map, Marker, Popup, TileLayer } from 'react-leaflet'
+import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
 import mapIcon from '../components/utils/mapIcon'
 import marker from '../images/logo-icon.svg'
 import api from '../services/api'
@@ -46,10 +46,10 @@ const OrphanagesMap: FC = () => {
         </footer>
       </aside>
 
-      <Map
+      <MapContainer
+        style={{ width: '100%', height: '100%' }}
         center={[Number(DEFAULT_LATITUDE), Number(DEFAULT_LONGITUDE)]}
         zoom={13}
-        style={{ width: '100%', height: '100%' }}
       >
         <TileLayer url={`${MAPBOX_URL}?access_token=${MAPBOX_TOKEN}`} />
 
@@ -63,7 +63,7 @@ const OrphanagesMap: FC = () => {
             </Popup>
           </Marker>
         ))}
-      </Map>
+      </MapContainer>
 
       <Link to="/orphanages/new" title="Cadastrar orfanato" className="btn-new-orphanage">
         <FiPlus size={32} color="#fff" />
