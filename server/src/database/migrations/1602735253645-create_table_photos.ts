@@ -1,8 +1,7 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm'
 
 export class createTablePhotos1602735253645 implements MigrationInterface {
-
-  private readonly tableName = 'photos'
+  public readonly tableName = 'photos'
 
   public async up(query: QueryRunner): Promise<void> {
     await query.createTable(new Table({
