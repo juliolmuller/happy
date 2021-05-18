@@ -1,16 +1,16 @@
 {
   "name": "happy-web",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "private": true,
   "license": "MIT",
   "author": "Julio L. Muller",
   "homepage": "https://happy-app-nlw.herokuapp.com/",
   "scripts": {
-    "server": "npm start --prefix ../server",
-    "start": "react-scripts start",
+    "postinstall": "node -e \"require('fs').existsSync('.env') || require('fs').copyFileSync('.env.example', '.env')\"",
+    "dev": "react-scripts start",
+    "development": "npm run dev",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "lint": "eslint src/ --fix"
   },
   "dependencies": {
     "axios": "~0.21.1",

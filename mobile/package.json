@@ -1,19 +1,19 @@
 {
   "name": "happy-mobile",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "private": true,
   "license": "MIT",
   "author": "Julio L. Muller",
   "main": "src/main.js",
   "scripts": {
-    "server": "npm start --prefix ../server",
-    "start": "cross-env NODE_ENV=development expo start",
-    "start:android": "npm start -- --android",
-    "start:ios": "npm start -- --ios",
+    "postinstall": "node -e \"require('fs').existsSync('.env') || require('fs').copyFileSync('.env.example', '.env')\"",
+    "dev": "expo start",
+    "development": "npm run dev",
     "build": "npm run build:android && npm run build:ios",
     "build:android": "cross-env NODE_ENV=production expo build:android --type apk",
     "build:ios": "cross-env NODE_ENV=production expo build:ios",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "lint": "eslint src/ --fix"
   },
   "dependencies": {
     "@expo-google-fonts/nunito": "^0.1.0",

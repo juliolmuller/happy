@@ -7,9 +7,9 @@
   "scripts": {
     "config": "node config.js",
     "build": "npm run build --prefix server/ && npm run build --prefix web/",
-    "mobile": "npm start --prefix mobile/",
-    "server": "npm start --prefix server/",
-    "web": "npm start --prefix web/"
+    "mobile": "npm run dev --prefix mobile/",
+    "server": "npm run dev --prefix server/",
+    "web": "npm run dev --prefix web/"
   },
   "devDependencies": {
     "colors": "^1.4.0",

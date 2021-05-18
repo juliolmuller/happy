@@ -73,26 +73,27 @@ Make sure to have **Node.js 10+** installed in your machine and its `node` and `
 
 ```bash
   # at project root (optional)
-$ npm install          # install required dependencies
-$ node config.js       # Creates ".env*" files and configure local network URL to be used
+$ npm install       # install required dependencies
+$ node config.js    # Creates ".env*" files and configure local network URL to be used
 
   # Server
 $ cd server
-$ npm install          # install required dependencies
-$ npm run migration    # setup database schema
-$ npm start            # start development Server
-$ npm run build        # transpile source files for deployment
+$ npm install       # install required dependencies
+$ npm run migrate   # setup database schema
+$ npm run seed      # pre-populate database
+$ npm run dev       # start development Server
+$ npm run build     # transpile source files for deployment
 
   # Web App
 $ cd web
-$ npm install          # install required dependencies
-$ npm start            # start development server
-$ npm run build        # build files for production
+$ npm install       # install required dependencies
+$ npm run dev       # start development server
+$ npm run build     # build files for production
 
   # Mobile App
 $ cd mobile
-$ npm install          # install required dependencies
-$ npm start            # build and serve the application via Expo mobile app
+$ npm install       # install required dependencies
+$ npm run dev       # build and serve the application via Expo mobile app
 ```
 
 ## :zap: Features Implementations
@@ -188,4 +189,4 @@ Besides, both v1.0 and v2.0 have their layouts available at **[Figma](http://fig
 
 ---
 
-Also checkout the project developed in [NLW #2](https://github.com/juliolmuller/proffy)
+Also checkout the project developed in [NLW #2](https://github.com/juliolmuller/proffy), [NLW #4](https://github.com/juliolmuller/move.id) and [NLW #5](https://github.com/juliolmuller/podcastr).
