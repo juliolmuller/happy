@@ -50,7 +50,7 @@ function OrphanageForm() {
       router.push(`/orphanages/${orphanageId}`)
     } catch (error) {
       // TODO: display validation errors
-      console.error(error, { ...error })
+      console.error(error, { ...error }) // eslint-disable-line no-console
     }
   }
 
