@@ -5,7 +5,7 @@
   "license": "MIT",
   "author": "Julio L. Muller",
   "scripts": {
-    "postinstall": "node -e \"require('fs').existsSync('.env') || require('fs').copyFileSync('.env.example', '.env')\"",
+    "postinstall": "node -e \"process.env.NODE_ENV === 'production' || require('fs').existsSync('.env') || require('fs').copyFileSync('.env.example', '.env')\"",
     "typeorm:js": "node node_modules/typeorm/cli.js",
     "typeorm": "tsnd node_modules/typeorm/cli.js",
     "seed": "tsnd src/database/seeds/",
