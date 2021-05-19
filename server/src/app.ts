@@ -1,4 +1,4 @@
-import './config'
+import './database/connection'
 import path from 'path'
 import express from 'express'
 import 'express-async-errors'

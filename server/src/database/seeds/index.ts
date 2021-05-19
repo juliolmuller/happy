@@ -38,4 +38,6 @@ const seed = async () => {
   console.log(`    ${records.length} records inserted into table "orphanages".`)
 }
 
-createConnection().then(seed)
+createConnection().then((connection) => {
+  seed().then(() => connection.close())
+})

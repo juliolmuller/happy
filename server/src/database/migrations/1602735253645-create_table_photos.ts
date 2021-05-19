@@ -1,11 +1,11 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm'
 
 export class createTablePhotos1602735253645 implements MigrationInterface {
-  public readonly tableName = 'photos'
+  public readonly TABLE_NAME = 'photos'
 
   public async up(query: QueryRunner): Promise<void> {
     await query.createTable(new Table({
-      name: this.tableName,
+      name: this.TABLE_NAME,
       columns: [
         {
           name: 'id',
@@ -22,6 +22,7 @@ export class createTablePhotos1602735253645 implements MigrationInterface {
         {
           name: 'orphanage_id',
           type: 'integer',
+          unsigned: true,
         },
       ],
       foreignKeys: [
@@ -38,6 +39,6 @@ export class createTablePhotos1602735253645 implements MigrationInterface {
   }
 
   public async down(query: QueryRunner): Promise<void> {
-    await query.dropTable(this.tableName)
+    await query.dropTable(this.TABLE_NAME)
   }
 }
