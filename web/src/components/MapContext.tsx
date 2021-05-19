@@ -1,4 +1,4 @@
-import { FC } from 'react'
+/* eslint-disable react/jsx-filename-extension */
 import { LeafletMouseEventHandlerFn } from 'leaflet'
 import { useMapEvent } from 'react-leaflet'
 
@@ -6,7 +6,7 @@ interface MapContextProps {
   onClick: LeafletMouseEventHandlerFn
 }
 
-const MapContext: FC<MapContextProps> = ({ onClick }) => {
+function MapContext({ onClick }: MapContextProps) {
   useMapEvent('click', onClick)
 
   return null

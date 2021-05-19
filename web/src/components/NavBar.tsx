@@ -1,10 +1,9 @@
-import { FC } from 'react'
 import { useHistory } from 'react-router-dom'
 import { FiArrowLeft } from 'react-icons/fi'
 import marker from '../images/logo-icon.svg'
 import '../styles/components/navbar.css'
 
-const NavBar: FC = () => {
+function NavBar() {
   const router = useHistory()
 
   return (

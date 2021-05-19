@@ -1,10 +1,10 @@
-import { FC, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FiArrowRight, FiPlus } from 'react-icons/fi'
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
 import mapIcon from '../components/utils/mapIcon'
 import marker from '../images/logo-icon.svg'
-import api from '../services/api'
+import http from '../services/api'
 import '../styles/pages/orphanages-map.css'
 
 const {
@@ -14,20 +14,13 @@ const {
   REACT_APP_MAPBOX_TOKEN: MAPBOX_TOKEN,
 } = process.env
 
-interface Orphanage {
-  id: number
-  name: string
-  latitude: number
-  longitude: number
-}
-
-const OrphanagesMap: FC = () => {
+function OrphanagesMap() {
   const [orphanages, setOrphanages] = useState<Orphanage[]>([])
 
   useEffect(() => {
-    api.get('/orphanages').then((response) => {
-      setOrphanages(response.data)
-    })
+    http
+      .get('/orphanages')
+      .then(({ data }) => setOrphanages(data))
   }, [])
 
   return (
@@ -55,7 +48,9 @@ const OrphanagesMap: FC = () => {
 
         {orphanages.map((orphanage) => (
           <Marker key={orphanage.id} icon={mapIcon} position={[orphanage.latitude, orphanage.longitude]}>
-            <Popup closeButton={false} minWidth={240} maxWidth={240} className="map-popup">
+            <Popup closeButton={false} minWidth={240} maxWidth={240}
+              className="map-popup"
+            >
               {orphanage.name}
               <Link to={`/orphanages/${orphanage.id}`}>
                 <FiArrowRight size={20} color="#fff" />

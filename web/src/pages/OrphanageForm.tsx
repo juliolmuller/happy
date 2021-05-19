@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, FormEvent, useState } from 'react'
+import { ChangeEvent, FormEvent, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { LeafletMouseEvent } from 'leaflet'
 import { MapContainer, Marker, TileLayer } from 'react-leaflet'
@@ -16,7 +16,7 @@ const {
   REACT_APP_MAPBOX_TOKEN: MAPBOX_TOKEN,
 } = process.env
 
-const OrphanageForm: FC = () => {
+function OrphanageForm() {
   const router = useHistory()
 
   const [latitude, setLatitude] = useState(0)
@@ -72,8 +72,8 @@ const OrphanageForm: FC = () => {
 
               <TileLayer url={`${MAPBOX_URL}?access_token=${MAPBOX_TOKEN}`} />
 
-              {latitude && longitude &&
-                <Marker icon={mapIcon} position={[latitude, longitude]} interactive={false} />
+              {latitude && longitude
+                && <Marker icon={mapIcon} position={[latitude, longitude]} interactive={false} />
               }
             </MapContainer>
 
