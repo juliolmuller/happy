@@ -1,16 +1,5 @@
-import dotenv from 'dotenv-flow'
+import './database/connection'
 import pg from 'pg'
-
-/**
- * Setup environment variables
- */
-if (process.env.NODE_ENV !== 'production') {
-  const config = dotenv.config({ purge_dotenv: true })
-
-  if (config.error && process.env.NODE_ENV !== 'production') {
-    throw config.error
-  }
-}
 
 /**
  * Configure PostgreSQL types parsers used by Knex
