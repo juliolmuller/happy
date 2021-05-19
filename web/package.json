@@ -4,7 +4,7 @@
   "private": true,
   "license": "MIT",
   "author": "Julio L. Muller",
-  "homepage": "https://happy-app-nlw.herokuapp.com/",
+  "homepage": "https://jlm-happy.vercel.app/",
   "scripts": {
     "postinstall": "node -e \"require('fs').existsSync('.env') || require('fs').copyFileSync('.env.example', '.env')\"",
     "dev": "react-scripts start",

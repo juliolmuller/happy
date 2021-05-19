@@ -8,7 +8,7 @@ const os = require('os')
 const REFERENCE_ENV = '.env.example'
 const DEVELOPMENT_ENV = '.env'
 const PRODUCTION_ENV = '.env.production'
-const SERVER_PORT = 3030
+const SERVER_PORT = 8081
 
 function getIPs() {
   const interfaces = os.networkInterfaces()
@@ -80,13 +80,13 @@ function configureServer(ip) {
 
 function configureMobile(ip) {
   configure('mobile', true, true, ip && {
-    API_URL: `http://${ip}:${SERVER_PORT}/api`,
+    API_URL: `http://${ip}:${SERVER_PORT}/api/`,
   })
 }
 
 function configureWeb(ip) {
   configure('web', true, true, ip && {
-    REACT_APP_API_URL: `http://${ip}:${SERVER_PORT}/api`,
+    REACT_APP_API_URL: `http://${ip}:${SERVER_PORT}/api/`,
   })
 }
 

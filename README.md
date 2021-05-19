@@ -27,7 +27,7 @@
 
 Application developed during the third edition of [Next Level Week](https://nextlevelweek.com/), promoted by [RocketSeat](https://rocketseat.com.br/). The objective was to build a multi-platform application to connect orphanages and people that want to find them, get in toudh and schedule a visit. The event chose the JavaScript stack to be used all over the implementation, using **React** in web version, **React Native** in mobile and **Node.js** at the server side.
 
-[Check out the application running!](https://happy-app-nlw.herokuapp.com/)
+[Check out the application running!](https://jlm-happy.vercel.app/)
 
 ## :trophy: Lessons Learned
 
