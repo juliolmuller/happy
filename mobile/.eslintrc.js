@@ -1,34 +1,25 @@
+/* eslint-env node */
 module.exports = {
   root: true,
-  env: {
-    'react-native/react-native': true,
-  },
   extends: [
-    '@lacussoft',
-    'plugin:@typescript-eslint/recommended',
+    'lacussoft',
+    'lacussoft/react-native',
+    'lacussoft/typescript',
   ],
   ignorePatterns: [
     '!babel.config*',
   ],
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    sourceType: 'module',
-    ecmaVersion: 2020,
-    ecmaFeatures: {
-      jsx: true,
-    },
-  },
-  plugins: [
-    '@typescript-eslint',
-    'react',
-    'react-hooks',
-    'react-native',
-  ],
   rules: {
-    'camelcase': ['error', {allow: ['purge_dotenv', 'opening_hours', 'open_on_weekends']}],
+    '@typescript-eslint/no-use-before-define': 'error',
+    'camelcase': ['error', {
+      allow: [
+        'purge_dotenv',
+        'opening_hours',
+        'open_on_weekends',
+      ],
+    }],
     'no-use-before-define': 'off',
-    'object-curly-newline': ['error', { ImportDeclaration: { multiline: true, minProperties: 9 } }],
-    'operator-linebreak': ['error', 'before', { 'overrides': { '&&': 'after' } }],
-    '@typescript-eslint/no-use-before-define': 'off',
+    'react-native/no-raw-text': 'off',
+    'react-native/no-single-element-style-arrays': 'off',
   },
 }
