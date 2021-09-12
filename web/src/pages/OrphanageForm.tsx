@@ -47,8 +47,8 @@ function OrphanageForm() {
       const orphanageId = response.data.id
 
       alert('Cadastro realizado com sucesso!')
-      router.push(`/orphanages/${orphanageId}`)
-    } catch (error) {
+      router.replace(`/orphanages/${orphanageId}`)
+    } catch (error: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
       // TODO: display validation errors
       console.error(error, { ...error }) // eslint-disable-line no-console
     }
