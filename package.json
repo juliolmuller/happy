@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "colors": "^1.4.0",
-    "envfile": "^6.14.0",
-    "prompts": "^2.4.0"
+    "envfile": "^6.17.0",
+    "prompts": "^2.4.1"
   }
 }
