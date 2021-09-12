@@ -11,7 +11,7 @@ function NavBar() {
       <img src={marker} alt="Happy logo" />
 
       <footer>
-        <button type="button" onClick={() => router.push('/app')} title="Voltar">
+        <button type="button" onClick={() => router.goBack()} title="Voltar">
           <FiArrowLeft size={24} color="#fff" />
         </button>
       </footer>
