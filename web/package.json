@@ -3,7 +3,10 @@
   "version": "1.0.4",
   "private": true,
   "license": "MIT",
-  "author": "Julio L. Muller",
+  "authors": [
+    "RocketSeat",
+    "Julio L. Muller"
+  ],
   "homepage": "https://jlm-happy.vercel.app/",
   "scripts": {
     "postinstall": "node -e \"require('fs').existsSync('.env') || require('fs').copyFileSync('.env.example', '.env')\"",
@@ -13,36 +16,28 @@
     "lint": "eslint src/ --fix"
   },
   "dependencies": {
-    "@react-leaflet/core": "~1.0.2",
-    "axios": "~0.21.1",
+    "axios": "~0.21.4",
     "leaflet": "^1.7.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.2.0",
-    "react-leaflet": "~3.1.0",
-    "react-router-dom": "^5.2.0"
+    "react-leaflet": "^3.2.1",
+    "react-router-dom": "^5.3.0"
   },
   "devDependencies": {
-    "@types/leaflet": "^1.7.0",
-    "@types/node": "^14.17.0",
-    "@types/react": "^17.0.6",
-    "@types/react-dom": "^17.0.5",
-    "@types/react-router-dom": "^5.1.7",
-    "eslint": "^7.26.0",
-    "eslint-config-lacussoft": "^2.0.1",
+    "@types/leaflet": "^1.7.5",
+    "@types/node": "^14.17.15",
+    "@types/react": "^17.0.20",
+    "@types/react-dom": "^17.0.9",
+    "@types/react-router-dom": "^5.1.8",
+    "eslint": "^7.32.0",
+    "eslint-config-lacussoft": "^2.0.3",
     "react-scripts": "^4.0.3",
-    "typescript": "^4.2.4"
+    "typescript": "^4.4.3"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ]
 }
