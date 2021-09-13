@@ -16,10 +16,10 @@ export default {
     },
     orientation: 'portrait',
     platforms: ['android', 'ios'],
-    icon: './src/images/favicon.png',
+    icon: './src/assets/img/favicon.png',
     splash: {
       backgroundColor: '#15c3d6',
-      image: './src/images/splash.png',
+      image: './src/assets/img/splash.png',
       resizeMode: 'contain',
     },
     assetBundlePatterns: [
@@ -38,7 +38,7 @@ export default {
       buildNumber: '1.0.0',
     },
     web: {
-      favicon: './src/images/favicon.png',
+      favicon: './src/assets/img/favicon.png',
     },
   },
 }

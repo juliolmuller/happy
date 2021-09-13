@@ -1,6 +1,6 @@
 import { useHistory } from 'react-router-dom'
 import { FiArrowLeft } from 'react-icons/fi'
-import marker from '../images/logo-icon.svg'
+import marker from '../assets/img/logo-icon.svg'
 import '../styles/components/navbar.css'
 
 function NavBar() {

@@ -1,6 +1,6 @@
 /* eslint-disable no-magic-numbers */
 import leaflet from 'leaflet'
-import marker from '../../images/logo-icon.svg'
+import marker from '../../assets/img/logo-icon.svg'
 
 const mapIcon = leaflet.icon({
   iconUrl: marker,
