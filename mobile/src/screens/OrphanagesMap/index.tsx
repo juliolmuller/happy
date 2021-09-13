@@ -1,34 +1,29 @@
-import React, { FC, useCallback, useState } from 'react'
-import { Dimensions, StyleSheet, Text, View } from 'react-native'
+import React from 'react'
+import { Text, View } from 'react-native'
 import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import MapView, { Callout, Marker, PROVIDER_GOOGLE } from 'react-native-maps'
 import { RectButton } from 'react-native-gesture-handler'
 import { Feather } from '@expo/vector-icons'
-import api from '../services/api'
-import mapMarker from '../images/map-marker.png'
+import api from '~/services/api'
+import mapMarker from '~/assets/img/map-marker.png'
+import styles from './styles'
 
-interface Orphanage {
-  id: number
-  name: string
-  latitude: number
-  longitude: number
-}
-
-const OrphanagesMap: FC = () => {
+function OrphanagesMap() {
   const { navigate } = useNavigation()
-  const [orphanages, setOrphanages] = useState<Orphanage[]>([])
+  const [orphanages, setOrphanages] = React.useState<Orphanage[]>([])
 
   const fetchOrphanages = async () => {
     try {
       const { data } = await api.get('/orphanages')
+
       setOrphanages(data)
-    } catch (err) {
+    } catch (err: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
       alert(err.message)
     }
   }
 
   useFocusEffect(
-    useCallback(() => {
+    React.useCallback(() => {
       fetchOrphanages()
     }, []),
   )
@@ -72,60 +67,5 @@ const OrphanagesMap: FC = () => {
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flexGrow: 1,
-  },
-
-  map: {
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height,
-  },
-
-  calloutContainer: {
-    width: 160,
-    height: 46,
-    paddingHorizontal: 16,
-    backgroundColor: 'rgba(255, 255, 255, 0.8)',
-    borderRadius: 16,
-    justifyContent: 'center',
-  },
-
-  calloutText: {
-    fontFamily: 'Nunito700',
-    color: '#0089a5',
-    fontSize: 14,
-  },
-
-  footer: {
-    height: 56,
-    position: 'absolute',
-    right: 24,
-    left: 24,
-    bottom: 32,
-    backgroundColor: '#fff',
-    borderRadius: 20,
-    paddingLeft: 24,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    elevation: 3,
-  },
-
-  footerText: {
-    fontFamily: 'Nunito700',
-    color: '#8fa7b3',
-  },
-
-  footerButton: {
-    width: 56,
-    height: 56,
-    backgroundColor: '#15c3d6',
-    borderRadius: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-})
 
 export default OrphanagesMap

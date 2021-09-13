@@ -19,6 +19,7 @@ module.exports = {
       ],
     }],
     'no-use-before-define': 'off',
+    'react/display-name': 'off',
     'react-native/no-raw-text': 'off',
     'react-native/no-single-element-style-arrays': 'off',
   },

@@ -1,14 +1,14 @@
-import React, { FC, useState } from 'react'
-import { View, StyleSheet, Dimensions, Text } from 'react-native'
+import React from 'react'
+import { Text, View } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { RectButton } from 'react-native-gesture-handler'
 import MapView, { Marker } from 'react-native-maps'
-import mapMarker from '../../images/map-marker.png'
+import mapMarker from '~/assets/img/map-marker.png'
+import styles from './styles'
 
-const OrphanagePosition: FC = () => {
+function OrphanagePosition() {
   const { navigate } = useNavigation()
-
-  const [position, setPosition] = useState({
+  const [position, setPosition] = React.useState({
     latitude: 0,
     longitude: 0,
   })
@@ -38,36 +38,5 @@ const OrphanagePosition: FC = () => {
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    position: 'relative',
-  },
-
-  mapStyle: {
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height,
-  },
-
-  nextButton: {
-    backgroundColor: '#15c3d6',
-    borderRadius: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: 56,
-
-    position: 'absolute',
-    left: 24,
-    right: 24,
-    bottom: 40,
-  },
-
-  nextButtonText: {
-    fontFamily: 'Nunito800',
-    fontSize: 16,
-    color: '#FFF',
-  },
-})
 
 export default OrphanagePosition

@@ -1,15 +1,16 @@
-import React, { FC } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import React from 'react'
+import { Text, View } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { BorderlessButton } from 'react-native-gesture-handler'
 import { Feather } from '@expo/vector-icons'
+import styles from './styles'
 
 interface HeaderProps {
   title: string
   cancelBtn?: boolean
 }
 
-const Header: FC<HeaderProps> = (props) => {
+function Header({ title, cancelBtn }: HeaderProps) {
   const { goBack, navigate } = useNavigation()
 
   return (
@@ -19,10 +20,10 @@ const Header: FC<HeaderProps> = (props) => {
       </BorderlessButton>
 
       <Text style={styles.title}>
-        {props.title}
+        {title}
       </Text>
 
-      {props.cancelBtn ? (
+      {cancelBtn ? (
         <BorderlessButton onPress={() => navigate('OrphanagesMap')}>
           <Feather name="x" size={24} color="#ff669d" />
         </BorderlessButton>
@@ -32,24 +33,5 @@ const Header: FC<HeaderProps> = (props) => {
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    padding: 24,
-    paddingTop: 44,
-    backgroundColor: '#f9fafc',
-    borderBottomWidth: 1,
-    borderColor: '#dde3f0',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-
-  title: {
-    fontFamily: 'Nunito600',
-    color: '#8fa7b3',
-    fontSize: 16,
-  },
-})
 
 export default Header

@@ -9,7 +9,7 @@ module.exports = (api) => {
     plugins: [
       ['module-resolver', {
         alias: {
-          '@': './src',
+          '~': './src',
         },
       }],
     ],

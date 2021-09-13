@@ -1,26 +1,27 @@
-import React, { FC, useState } from 'react'
-import { Image, ScrollView, StyleSheet, Switch, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import React from 'react'
+import { Image, ScrollView, Switch, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import { RectButton } from 'react-native-gesture-handler'
 import * as ImagePicker from 'expo-image-picker'
 import { Feather } from '@expo/vector-icons'
-import api from '../../services/api'
+import api from '../../../services/api'
+import styles from './styles'
 
 interface OrphanageFormRouteParams {
   latitude: number
   longitude: number
 }
 
-const OrphanageForm: FC = () => {
+function OrphanageForm() {
   const { navigate } = useNavigation()
   const { latitude, longitude } = useRoute().params as OrphanageFormRouteParams
 
-  const [name, setName] = useState('')
-  const [about, setAbout] = useState('')
-  const [instructions, setInstructions] = useState('')
-  const [openingHours, setOpeningHours] = useState('')
-  const [openOnWeekends, setOpenOnWeekends] = useState(false)
-  const [photos, setPhotos] = useState<string[]>([])
+  const [name, setName] = React.useState('')
+  const [about, setAbout] = React.useState('')
+  const [instructions, setInstructions] = React.useState('')
+  const [openingHours, setOpeningHours] = React.useState('')
+  const [openOnWeekends, setOpenOnWeekends] = React.useState(false)
+  const [photos, setPhotos] = React.useState<string[]>([])
   const submissionAllowed = Boolean(name && about && instructions && openingHours && photos.length)
 
   const handleBrowsePhoto = async () => {
@@ -62,7 +63,7 @@ const OrphanageForm: FC = () => {
       await api.post('/orphanages', formData)
 
       navigate('OrphanagesMap')
-    } catch (error) {
+    } catch (error: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
       // TODO: display validation errors
       console.error(error, { ...error })
       alert('Falha ao tentar salvar os dados. Tente novamente mais tarde.')
@@ -135,97 +136,5 @@ const OrphanageForm: FC = () => {
     </ScrollView>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-
-  title: {
-    color: '#5c8599',
-    fontSize: 24,
-    fontFamily: 'Nunito700',
-    marginBottom: 32,
-    paddingBottom: 24,
-    borderBottomWidth: 0.8,
-    borderBottomColor: '#d3e2e6',
-  },
-
-  label: {
-    color: '#8fa7b3',
-    fontFamily: 'Nunito600',
-    marginBottom: 8,
-  },
-
-  comment: {
-    fontSize: 11,
-    color: '#8fa7b3',
-  },
-
-  input: {
-    backgroundColor: '#fff',
-    borderWidth: 1.4,
-    borderColor: '#d3e2e6',
-    borderRadius: 20,
-    height: 56,
-    paddingVertical: 18,
-    paddingHorizontal: 24,
-    marginBottom: 16,
-    textAlignVertical: 'top',
-  },
-
-  selectedPhotosContainer: {
-    flexDirection: 'row',
-  },
-
-  selectedPhoto: {
-    width: 64,
-    height: 64,
-    borderRadius: 20,
-    marginBottom: 32,
-    marginRight: 8,
-  },
-
-  photosInput: {
-    backgroundColor: 'rgba(255, 255, 255, 0.5)',
-    borderStyle: 'dashed',
-    borderColor: '#96d2f0',
-    borderWidth: 1.4,
-    borderRadius: 20,
-    height: 56,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 32,
-  },
-
-  switchContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginTop: 16,
-  },
-
-  submitBtn: {
-    borderRadius: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: 56,
-    marginTop: 32,
-  },
-
-  btnEnabled: {
-    backgroundColor: '#15c3d6',
-  },
-
-  btnDisabled: {
-    backgroundColor: '#ccc',
-  },
-
-  SubmitBtnText: {
-    fontFamily: 'Nunito800',
-    fontSize: 16,
-    color: '#fff',
-  },
-})
 
 export default OrphanageForm
