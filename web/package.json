@@ -10,6 +10,7 @@
   "homepage": "https://jlm-happy.vercel.app/",
   "scripts": {
     "postinstall": "node -e \"require('fs').existsSync('.env') || require('fs').copyFileSync('.env.example', '.env')\"",
+    "commit": "cd .. && npm run commit",
     "dev": "react-scripts start",
     "development": "npm run dev",
     "build": "react-scripts build",

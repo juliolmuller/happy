@@ -6,14 +6,33 @@
   "author": "Julio L. Muller",
   "scripts": {
     "config": "node config.js",
+    "prepare": "husky install",
+    "commit": "git-cz",
     "build": "npm run build --prefix server/ && npm run build --prefix web/",
     "mobile": "npm run dev --prefix mobile/",
     "server": "npm run dev --prefix server/",
     "web": "npm run dev --prefix web/"
   },
   "devDependencies": {
+    "@commitlint/cli": "^16.2.1",
+    "@commitlint/config-conventional": "^16.2.1",
     "colors": "^1.4.0",
+    "commitizen": "^4.2.4",
+    "cz-conventional-changelog": "^3.3.0",
     "envfile": "^6.17.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.4",
     "prompts": "^2.4.1"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,vue,css,scss}": "eslint --fix"
+  },
+  "commitlint": {
+    "extends": "@commitlint/config-conventional"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   }
 }

@@ -10,6 +10,7 @@
   "main": "src/main.js",
   "scripts": {
     "postinstall": "node -e \"require('fs').existsSync('.env') || require('fs').copyFileSync('.env.example', '.env')\"",
+    "commit": "cd .. && npm run commit",
     "dev": "expo start",
     "development": "npm run dev",
     "build": "npm run build:android && npm run build:ios",
