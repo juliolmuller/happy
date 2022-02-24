@@ -34,10 +34,5 @@
     "eslint-config-lacussoft": "^2.0.3",
     "react-scripts": "^4.0.3",
     "typescript": "^4.4.3"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not op_mini all"
-  ]
+  }
 }
