@@ -1,12 +1,14 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 .DS_Store/
-.vscode/
 node_modules/
 
 .production/
 .expo/
+.next/
+.vercel/
 build/
+dist/
 web-build/
 
 .env*
