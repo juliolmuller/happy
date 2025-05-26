@@ -1,0 +1,10 @@
+packages:
+  - mobile/
+  - server/
+  - web/
+onlyBuiltDependencies:
+  - '@prisma/client'
+  - '@prisma/engines'
+  - core-js
+  - esbuild
+  - prisma

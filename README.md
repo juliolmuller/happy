@@ -69,31 +69,31 @@ Application developed during the third edition of [Next Level Week](https://next
 
 ## :hammer: Setting up the Environment
 
-Make sure to have **Node.js 10+** installed in your machine and its `node` and `npm` shortcuts available through the command line, then use the following routines to run each part of the project:
+Make sure to have **Node.js 10+** installed in your machine and its `node` and `pnpm` shortcuts available through the command line, then use the following routines to run each part of the project:
 
 ```bash
   # at project root (optional)
-$ npm install       # install required dependencies
+$ pnpm install       # install required dependencies
 $ node config.js    # Creates ".env*" files and configure local network URL to be used
 
   # Server
 $ cd server
-$ npm install       # install required dependencies
-$ npm run migrate   # setup database schema
-$ npm run seed      # pre-populate database
-$ npm run dev       # start development Server
-$ npm run build     # transpile source files for deployment
+$ pnpm install       # install required dependencies
+$ pnpm run migrate   # setup database schema
+$ pnpm run seed      # pre-populate database
+$ pnpm run dev       # start development Server
+$ pnpm run build     # transpile source files for deployment
 
   # Web App
 $ cd web
-$ npm install       # install required dependencies
-$ npm run dev       # start development server
-$ npm run build     # build files for production
+$ pnpm install       # install required dependencies
+$ pnpm run dev       # start development server
+$ pnpm run build     # build files for production
 
   # Mobile App
 $ cd mobile
-$ npm install       # install required dependencies
-$ npm run dev       # build and serve the application via Expo mobile app
+$ pnpm install       # install required dependencies
+$ pnpm run dev       # build and serve the application via Expo mobile app
 ```
 
 ## :zap: Features Implementations

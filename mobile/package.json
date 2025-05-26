@@ -9,10 +9,10 @@
   ],
   "main": "src/main.ts",
   "scripts": {
-    "postinstall": "bun -e \"await Bun.file('.environment').exists() || await Bun.write('.environment', Bun.file('.env.example'))\"",
-    "commit": "cd .. && bun run commit",
+    "postinstall": "node -e \"require('fs').existsSync('.env') || require('fs').copyFileSync('.env.example', '.env')\"",
+    "commit": "cd .. && pnpm run commit",
     "development": "expo start",
-    "dev": "bun run development",
+    "dev": "pnpm run development",
     "build:dev": "eas build -e development -p android",
     "build:stage": "eas build -e preview -p android",
     "build": "eas build -p android",
@@ -33,7 +33,7 @@
     "react": "19.0.0",
     "react-native": "0.79.2",
     "react-native-gesture-handler": "~2.24.0",
-    "react-native-maps": "~1.23.8",
+    "react-native-maps": "~1.20.1",
     "react-native-safe-area-context": "5.4.0",
     "react-native-screens": "4.10.0"
   },

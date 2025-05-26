@@ -9,13 +9,13 @@
   ],
   "type": "module",
   "scripts": {
-    "postinstall": "bun -e \"await Bun.file('.environment').exists() || await Bun.write('.environment', Bun.file('.env.example'))\"",
-    "commit": "cd .. && bun run commit",
+    "postinstall": "node -e \"require('fs').existsSync('.env') || require('fs').copyFileSync('.env.example', '.env')\"",
+    "commit": "cd .. && pnpm run commit",
     "development": "vite",
-    "dev": "bun run development",
+    "dev": "pnpm run development",
     "build": "tsc -b && vite build",
     "production": "vite preview",
-    "prod": "bun run production",
+    "prod": "pnpm run production",
     "lint": "eslint --fix src/ eslint.config.mjs vite.config.ts"
   },
   "dependencies": {
