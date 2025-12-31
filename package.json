@@ -1,5 +1,6 @@
 {
-  "name": "@happy/monorepo",
+  "name": "happy",
+  "version": "auto",
   "private": true,
   "homepage": "https://jlm-happy.vercel.app/",
   "scripts": {
@@ -15,16 +16,17 @@
     "lint:server": "pnpm --filter ./server/ run lint",
     "lint:web": "pnpm --filter ./web/ run lint"
   },
+  "packageManager": "pnpm@10.27.0+sha512.72d699da16b1179c14ba9e64dc71c9a40988cbdc65c264cb0e489db7de917f20dcf4d64d8723625f2969ba52d4b7e2a1170682d9ac2a5dcaeaab732b7e16f04a",
   "devDependencies": {
-    "@commitlint/cli": "^19.8.1",
-    "@commitlint/config-conventional": "^19.8.1",
-    "@commitlint/config-workspace-scopes": "^19.8.1",
-    "@commitlint/prompt-cli": "^19.8.1",
-    "eslint": "^9.27.0",
-    "eslint-config-any": "^1.1.0",
+    "@commitlint/cli": "^20.2.0",
+    "@commitlint/config-conventional": "^20.2.0",
+    "@commitlint/config-workspace-scopes": "^20.2.0",
+    "@commitlint/prompt-cli": "^20.2.0",
+    "eslint": "^9.39.2",
+    "eslint-config-any": "^2.2.1",
     "husky": "^9.1.7",
-    "lint-staged": "^16.0.0",
-    "prettier": "^3.5.3",
-    "typescript": "^5.8.3"
+    "lint-staged": "^16.2.7",
+    "prettier": "^3.7.4",
+    "typescript": "^5.9.3"
   }
 }
