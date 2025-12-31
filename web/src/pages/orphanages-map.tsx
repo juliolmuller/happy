@@ -1,27 +1,24 @@
-import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { FiArrowRight, FiPlus } from 'react-icons/fi'
-import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
-import mapIcon from '../components/utils/mapIcon'
-import marker from '../assets/img/logo-icon.svg'
-import http from '../services/api'
-import '../styles/pages/orphanages-map.css'
+import { useEffect, useState } from 'react';
+import { FiArrowRight, FiPlus } from 'react-icons/fi';
+import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
+import { Link } from 'react-router';
 
-const {
-  REACT_APP_DEFAULT_LATITUDE: DEFAULT_LATITUDE,
-  REACT_APP_DEFAULT_LONGITUDE: DEFAULT_LONGITUDE,
-  REACT_APP_MAPBOX_URL: MAPBOX_URL,
-  REACT_APP_MAPBOX_TOKEN: MAPBOX_TOKEN,
-} = process.env
+import marker from '~/assets/img/logo-icon.svg';
+import { mapIcon } from '~/components/utils';
+import { apiClient } from '~/services/api';
+import '~/styles/pages/orphanages-map.scss';
 
-function OrphanagesMap() {
-  const [orphanages, setOrphanages] = useState<Orphanage[]>([])
+const DEFAULT_LATITUDE = import.meta.env.VITE_DEFAULT_LATITUDE;
+const DEFAULT_LONGITUDE = import.meta.env.VITE_DEFAULT_LONGITUDE;
+const MAPBOX_URL = import.meta.env.VITE_MAPBOX_URL;
+const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN;
+
+export function OrphanagesMap() {
+  const [orphanages, setOrphanages] = useState<Orphanage[]>([]);
 
   useEffect(() => {
-    http
-      .get('/orphanages')
-      .then(({ data }) => setOrphanages(data))
-  }, [])
+    apiClient.get('/orphanages').then(({ data }) => setOrphanages(data));
+  }, []);
 
   return (
     <div id="orphanages-map">
@@ -47,10 +44,12 @@ function OrphanagesMap() {
         <TileLayer url={`${MAPBOX_URL}?access_token=${MAPBOX_TOKEN}`} />
 
         {orphanages.map((orphanage) => (
-          <Marker key={orphanage.id} icon={mapIcon} position={[orphanage.latitude, orphanage.longitude]}>
-            <Popup closeButton={false} minWidth={240} maxWidth={240}
-              className="map-popup"
-            >
+          <Marker
+            key={orphanage.id}
+            icon={mapIcon}
+            position={[orphanage.latitude, orphanage.longitude]}
+          >
+            <Popup closeButton={false} minWidth={240} maxWidth={240} className="map-popup">
               {orphanage.name}
               <Link to={`/orphanages/${orphanage.id}`}>
                 <FiArrowRight size={20} color="#fff" />
@@ -64,7 +63,5 @@ function OrphanagesMap() {
         <FiPlus size={32} color="#fff" />
       </Link>
     </div>
-  )
+  );
 }
-
-export default OrphanagesMap

@@ -1,15 +1,15 @@
 /// <reference types="react-scripts" />
 
 interface Orphanage {
-  id: number
-  name: string
-  latitude: number
-  longitude: number
-  about: string
-  instructions: string
-  opening_hours: string
-  open_on_weekends: boolean
-  photos: Array<{
-    url: string
-  }>
+  about: string;
+  id: number;
+  instructions: string;
+  latitude: number;
+  longitude: number;
+  name: string;
+  open_on_weekends: boolean;
+  opening_hours: string;
+  photos: {
+    url: string;
+  }[];
 }

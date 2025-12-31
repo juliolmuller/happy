@@ -1,9 +1,16 @@
-import Routes from './routes'
-import 'leaflet/dist/leaflet.css'
-import './styles/app.css'
+import { BrowserRouter, Route, Routes } from 'react-router';
 
-function App() {
-  return <Routes />
+import { Landing, OrphanageDetails, OrphanageForm, OrphanagesMap } from './pages';
+
+export function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/app" element={<OrphanagesMap />} />
+        <Route path="/orphanages/new" element={<OrphanageForm />} />
+        <Route path="/orphanages/:id" element={<OrphanageDetails />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
-
-export default App

@@ -1,31 +1,30 @@
-import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import { FaWhatsapp } from 'react-icons/fa'
-import { FiClock, FiInfo } from 'react-icons/fi'
-import { MapContainer, Marker, TileLayer } from 'react-leaflet'
-import mapIcon from '../components/utils/mapIcon'
-import NavBar from '../components/NavBar'
-import http from '../services/api'
-import '../styles/pages/orphanage-details.css'
+import { useEffect, useState } from 'react';
+import { FaWhatsapp } from 'react-icons/fa';
+import { FiClock, FiInfo } from 'react-icons/fi';
+import { MapContainer, Marker, TileLayer } from 'react-leaflet';
+import { useParams } from 'react-router';
 
-interface OrphanageDetailsParams {
-  id: string
+import { NavBar } from '~/components';
+import { mapIcon } from '~/components/utils';
+import { apiClient } from '~/services/api';
+import '~/styles/pages/orphanage-details.scss';
+
+export interface OrphanageDetailsParams {
+  id: string;
 }
 
-function OrphanageDetails() {
-  const routeParams = useParams<OrphanageDetailsParams>()
-  const [orphanage, setOrphanage] = useState<Orphanage>()
-  const [activeImage, setActiveImage] = useState(0)
+export function OrphanageDetails() {
+  const { id } = useParams<keyof OrphanageDetailsParams>();
+  const [orphanage, setOrphanage] = useState<Orphanage>();
+  const [activeImage, setActiveImage] = useState(0);
 
   useEffect(() => {
-    http
-      .get(`/orphanages/${routeParams.id}`)
-      .then(({ data }) => setOrphanage(data))
-  }, [routeParams.id])
+    apiClient.get(`/orphanages/${id}`).then(({ data }) => setOrphanage(data));
+  }, [id]);
 
   if (!orphanage) {
     // TODO: add loading animation
-    return <h1 style={{ color: 'black' }}>Loading...</h1>
+    return <h1 style={{ color: 'black' }}>Loading...</h1>;
   }
 
   return (
@@ -66,12 +65,22 @@ function OrphanageDetails() {
                 scrollWheelZoom={false}
                 doubleClickZoom={false}
               >
-                <TileLayer url={`${process.env.REACT_APP_MAPBOX_URL}?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`} />
-                <Marker interactive={false} icon={mapIcon} position={[orphanage.latitude, orphanage.longitude]} />
+                <TileLayer
+                  url={`${import.meta.env.VITE_MAPBOX_URL}?access_token=${import.meta.env.VITE_MAPBOX_TOKEN}`}
+                />
+                <Marker
+                  interactive={false}
+                  icon={mapIcon}
+                  position={[orphanage.latitude, orphanage.longitude]}
+                />
               </MapContainer>
 
               <footer>
-                <a target="_blank" rel="noopener noreferrer" href={`https://www.google.com/maps/dir/?api=1&destination=${orphanage.latitude},${orphanage.longitude}`}>
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={`https://www.google.com/maps/dir/?api=1&destination=${orphanage.latitude},${orphanage.longitude}`}
+                >
                   Ver rotas no Google Maps
                 </a>
               </footer>
@@ -111,7 +120,5 @@ function OrphanageDetails() {
         </div>
       </main>
     </div>
-  )
+  );
 }
-
-export default OrphanageDetails

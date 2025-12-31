@@ -1,58 +1,56 @@
-import { ChangeEvent, FormEvent, useState } from 'react'
-import { useHistory } from 'react-router-dom'
-import { LeafletMouseEvent } from 'leaflet'
-import { MapContainer, Marker, TileLayer } from 'react-leaflet'
-import { FiPlus } from 'react-icons/fi'
-import mapIcon from '../components/utils/mapIcon'
-import MapContext from '../components/MapContext'
-import NavBar from '../components/NavBar'
-import api from '../services/api'
-import '../styles/pages/orphanage-form.css'
+import { type LeafletMouseEvent } from 'leaflet';
+import { type ChangeEvent, type FormEvent, useState } from 'react';
+import { FiPlus } from 'react-icons/fi';
+import { MapContainer, Marker, TileLayer } from 'react-leaflet';
+import { useNavigate } from 'react-router';
 
-const {
-  REACT_APP_DEFAULT_LATITUDE: DEFAULT_LATITUDE,
-  REACT_APP_DEFAULT_LONGITUDE: DEFAULT_LONGITUDE,
-  REACT_APP_MAPBOX_URL: MAPBOX_URL,
-  REACT_APP_MAPBOX_TOKEN: MAPBOX_TOKEN,
-} = process.env
+import { MapContext, NavBar } from '~/components';
+import { mapIcon } from '~/components/utils';
+import { apiClient } from '~/services/api';
+import '~/styles/pages/orphanage-form.scss';
 
-function OrphanageForm() {
-  const router = useHistory()
+const DEFAULT_LATITUDE = import.meta.env.VITE_DEFAULT_LATITUDE;
+const DEFAULT_LONGITUDE = import.meta.env.VITE_DEFAULT_LONGITUDE;
+const MAPBOX_URL = import.meta.env.VITE_MAPBOX_URL;
+const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN;
 
-  const [latitude, setLatitude] = useState(0)
-  const [longitude, setLongitude] = useState(0)
-  const [openOnWeekends, setOpenOnWeekends] = useState(false)
-  const [photosPreview, setPhotosPreview] = useState<string[]>([])
+export function OrphanageForm() {
+  const navigate = useNavigate();
+
+  const [latitude, setLatitude] = useState(0);
+  const [longitude, setLongitude] = useState(0);
+  const [openOnWeekends, setOpenOnWeekends] = useState(false);
+  const [photosPreview, setPhotosPreview] = useState<string[]>([]);
 
   const handleMapCLick = (event: LeafletMouseEvent) => {
-    setLatitude(event.latlng.lat)
-    setLongitude(event.latlng.lng)
-  }
+    setLatitude(event.latlng.lat);
+    setLongitude(event.latlng.lng);
+  };
 
   const handleSelectPhotos = (event: ChangeEvent<HTMLInputElement>) => {
-    const selectedPhotos = Array.from(event.target.files || [])
-    setPhotosPreview(selectedPhotos.map(URL.createObjectURL))
-  }
+    const selectedPhotos = Array.from(event.target.files || []);
+    setPhotosPreview(selectedPhotos.map(URL.createObjectURL));
+  };
 
   const handleSubmit = async (event: FormEvent) => {
-    event.preventDefault()
+    event.preventDefault();
 
-    const formData = new FormData(event.target as HTMLFormElement)
-    latitude && formData.append('latitude', String(latitude))
-    longitude && formData.append('longitude', String(longitude))
-    formData.append('open_on_weekends', String(openOnWeekends))
+    const formData = new FormData(event.target as HTMLFormElement);
+    if (latitude) formData.append('latitude', String(latitude));
+    if (longitude) formData.append('longitude', String(longitude));
+    formData.append('open_on_weekends', String(openOnWeekends));
 
     try {
-      const response = await api.post('/orphanages', formData)
-      const orphanageId = response.data.id
+      const response = await apiClient.post('/orphanages', formData);
+      const orphanageId = response.data.id;
 
-      alert('Cadastro realizado com sucesso!')
-      router.replace(`/orphanages/${orphanageId}`)
-    } catch (error: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
+      alert('Cadastro realizado com sucesso!');
+      navigate(`/orphanages/${orphanageId}`, { replace: true });
+    } catch (error: unknown) {
       // TODO: display validation errors
-      console.error(error, { ...error }) // eslint-disable-line no-console
+      console.error(error);
     }
-  }
+  };
 
   return (
     <div id="page-orphanage-form">
@@ -72,9 +70,9 @@ function OrphanageForm() {
 
               <TileLayer url={`${MAPBOX_URL}?access_token=${MAPBOX_TOKEN}`} />
 
-              {latitude && longitude
-                && <Marker icon={mapIcon} position={[latitude, longitude]} interactive={false} />
-              }
+              {latitude && longitude && (
+                <Marker icon={mapIcon} position={[latitude, longitude]} interactive={false} />
+              )}
             </MapContainer>
 
             <div className="input-block">
@@ -83,7 +81,9 @@ function OrphanageForm() {
             </div>
 
             <div className="input-block">
-              <label htmlFor="about">Sobre <span>Máximo de 300 caracteres</span></label>
+              <label htmlFor="about">
+                Sobre <span>Máximo de 300 caracteres</span>
+              </label>
               <textarea id="about" name="about" maxLength={300} />
             </div>
 
@@ -128,12 +128,16 @@ function OrphanageForm() {
                   type="button"
                   className={openOnWeekends ? 'active' : ''}
                   onClick={() => setOpenOnWeekends(true)}
-                >Sim</button>
+                >
+                  Sim
+                </button>
                 <button
                   type="button"
                   className={openOnWeekends ? '' : 'active'}
                   onClick={() => setOpenOnWeekends(false)}
-                >Não</button>
+                >
+                  Não
+                </button>
               </div>
             </div>
           </fieldset>
@@ -144,7 +148,5 @@ function OrphanageForm() {
         </form>
       </main>
     </div>
-  )
+  );
 }
-
-export default OrphanageForm

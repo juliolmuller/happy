@@ -1,13 +1,14 @@
-import { Link } from 'react-router-dom'
-import { FiArrowRight } from 'react-icons/fi'
-import logoImg from '../assets/img/logo.svg'
-import '../styles/pages/landing.css'
+import { FiArrowRight } from 'react-icons/fi';
+import { Link } from 'react-router';
 
-function Landing() {
+import logoImg from '~/assets/img/logo.svg';
+import '~/styles/pages/landing.scss';
+
+export function Landing() {
   return (
     <div id="landing">
       <div className="content-wrapper">
-        <img src={logoImg} alt="Happy logo"/>
+        <img src={logoImg} alt="Happy logo" />
 
         <main>
           <h1>Leve felicidade para o mundo</h1>
@@ -24,7 +25,5 @@ function Landing() {
         </Link>
       </div>
     </div>
-  )
+  );
 }
-
-export default Landing
