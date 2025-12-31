@@ -6,6 +6,7 @@
   "scripts": {
     "prepare": "husky",
     "commit": "commit",
+    "release": "semantic-release",
     "mobile": "pnpm --filter ./mobile/ run dev",
     "server": "pnpm --filter ./server/ run dev",
     "web": "pnpm --filter ./web/ run dev",
@@ -22,11 +23,16 @@
     "@commitlint/config-conventional": "^20.2.0",
     "@commitlint/config-workspace-scopes": "^20.2.0",
     "@commitlint/prompt-cli": "^20.2.0",
+    "@semantic-release/commit-analyzer": "^13.0.1",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^12.0.2",
+    "@semantic-release/release-notes-generator": "^14.1.0",
     "eslint": "^9.39.2",
     "eslint-config-any": "^2.2.1",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.7",
     "prettier": "^3.7.4",
+    "semantic-release": "^25.0.2",
     "typescript": "^5.9.3"
   }
 }
