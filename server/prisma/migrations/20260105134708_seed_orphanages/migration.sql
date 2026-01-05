@@ -44,56 +44,56 @@ INSERT INTO "orphanage_photos" (
 ) VALUES
   (
     'cmk17d1jw000704l48014brjs',
-    'orphanage-image-1.jpg',
+    'cmk17bmd3000104l41itvhoox/orphanage-image-1.jpg',
     'cmk17bmd3000104l41itvhoox',
     '2025-03-30 10:00:00',
     '2025-03-30 10:00:00'
   ),
   (
     'cmk17df91000804l46ity8oob',
-    'orphanage-image-2.jpg',
+    'cmk17bmd3000104l41itvhoox/orphanage-image-2.jpg',
     'cmk17bmd3000104l41itvhoox',
     '2025-03-30 10:00:00',
     '2025-03-30 10:00:00'
   ),
   (
     'cmk17dx78000904l479nz0c0m',
-    'orphanage-image-3.jpg',
+    'cmk17bmd3000104l41itvhoox/orphanage-image-3.jpg',
     'cmk17bmd3000104l41itvhoox',
     '2025-03-30 10:00:00',
     '2025-03-30 10:00:00'
   ),
   (
     'cmk17eamm000a04l4f62e0a0d',
-    'orphanage-image-4.jpg',
+    'cmk17bmd3000104l41itvhoox/orphanage-image-4.jpg',
     'cmk17bmd3000104l41itvhoox',
     '2025-03-30 10:00:00',
     '2025-03-30 10:00:00'
   ),
   (
     'cmk17eij0000b04l41s3kfron',
-    'orphanage-image-1.jpg',
+    'cmk17cg27000604l49uew8w8y/orphanage-image-1.jpg',
     'cmk17cg27000604l49uew8w8y',
     '2025-12-18 14:30:00',
     '2025-12-18 14:30:00'
   ),
   (
     'cmk17fbbi000e04l41kjubi98',
-    'orphanage-image-2.jpg',
+    'cmk17cg27000604l49uew8w8y/orphanage-image-2.jpg',
     'cmk17cg27000604l49uew8w8y',
     '2025-12-18 14:30:00',
     '2025-12-18 14:30:00'
   ),
   (
     'cmk17f3ws000d04l4axhpgf8c',
-    'orphanage-image-3.jpg',
+    'cmk17cg27000604l49uew8w8y/orphanage-image-3.jpg',
     'cmk17cg27000604l49uew8w8y',
     '2025-12-18 14:30:00',
     '2025-12-18 14:30:00'
   ),
   (
     'cmk17ex8r000c04l400b1c2hw',
-    'orphanage-image-4.jpg',
+    'cmk17cg27000604l49uew8w8y/orphanage-image-4.jpg',
     'cmk17cg27000604l49uew8w8y',
     '2025-12-18 14:30:00',
     '2025-12-18 14:30:00'
