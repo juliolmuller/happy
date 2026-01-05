@@ -1,5 +1,6 @@
 {
   "name": "@happy/web",
+  "version": "auto",
   "private": true,
   "license": "MIT",
   "authors": [
