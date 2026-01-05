@@ -2,7 +2,7 @@ import HttpStatus from 'http-status-codes';
 import * as z from 'zod';
 
 import { prismaClient as database } from '../../../../database/connection';
-import { sendToStorage } from '../../../../utils';
+import { getStorageURL, sendToStorage } from '../../../../utils';
 import { type Controller } from '../../../http';
 
 const orphanageSchemaValidation = z.object({
@@ -22,11 +22,11 @@ export const createOrphanageController: Controller = async (request, response) =
   if (!Array.isArray(photos) || photos.length === 0) {
     response
       .status(HttpStatus.BAD_REQUEST)
-      .send({ message: 'Orphanage should have at least one photo' });
+      .json({ message: 'Orphanage should have at least one photo' });
     return;
   }
 
-  await database.$transaction(async (database) => {
+  const createdOrphanage = await database.$transaction(async (database) => {
     const createdOrphanage = await database.orphanage.create({
       data: {
         name: data.name,
@@ -50,7 +50,21 @@ export const createOrphanageController: Controller = async (request, response) =
         },
       });
     }
+
+    const updatedOrphanage = await database.orphanage.findUniqueOrThrow({
+      where: {
+        id: createdOrphanage.id,
+      },
+      include: {
+        photos: true,
+      },
+    });
+
+    return {
+      ...updatedOrphanage,
+      photos: updatedOrphanage.photos.map((photo) => getStorageURL(photo.path)),
+    };
   });
 
-  response.status(HttpStatus.CREATED).send();
+  response.status(HttpStatus.CREATED).json(createdOrphanage);
 };

@@ -23,5 +23,5 @@ export const listOrphanagesController: Controller = async (_request, response) =
     photos: orphanage.photos.map((photo) => getStorageURL(photo.path)),
   }));
 
-  response.status(HttpStatus.OK).send(data);
+  response.status(HttpStatus.OK).json(data);
 };

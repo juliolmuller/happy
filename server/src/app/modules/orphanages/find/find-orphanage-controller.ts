@@ -15,7 +15,7 @@ export const findOrphanageController: Controller = async (request, response) => 
   });
 
   if (!orphanage) {
-    response.status(HttpStatus.NOT_FOUND).send({ message: 'Orphanage not found' });
+    response.status(HttpStatus.NOT_FOUND).json({ message: 'Orphanage not found' });
     return;
   }
 
@@ -31,5 +31,5 @@ export const findOrphanageController: Controller = async (request, response) => 
     photos: orphanage.photos.map((photo) => getStorageURL(photo.path)),
   };
 
-  response.status(HttpStatus.OK).send(data);
+  response.status(HttpStatus.OK).json(data);
 };
