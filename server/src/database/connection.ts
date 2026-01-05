@@ -1,3 +1,3 @@
-import { createConnection } from 'typeorm'
+import { PrismaClient } from '@prisma/client';
 
-createConnection()
+export const prismaClient = new PrismaClient();

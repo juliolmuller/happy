@@ -11,5 +11,6 @@
     "orph",
     "subproject",
     "whatsapp"
-  ]
+  ],
+  "prisma.pinToPrisma6": true
 }
