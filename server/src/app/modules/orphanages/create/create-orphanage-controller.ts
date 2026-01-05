@@ -8,11 +8,11 @@ import { type Controller } from '../../../http';
 const orphanageSchemaValidation = z.object({
   name: z.string().min(1),
   about: z.string().min(1).max(500),
-  latitude: z.number(),
-  longitude: z.number(),
+  latitude: z.coerce.number(),
+  longitude: z.coerce.number(),
   instructions: z.string().min(1),
   opening_hours: z.string().min(1),
-  open_on_weekends: z.boolean(),
+  open_on_weekends: z.coerce.boolean(),
 });
 
 export const createOrphanageController: Controller = async (request, response) => {
@@ -29,7 +29,11 @@ export const createOrphanageController: Controller = async (request, response) =
   await database.$transaction(async (database) => {
     const createdOrphanage = await database.orphanage.create({
       data: {
-        ...data,
+        name: data.name,
+        about: data.about,
+        latitude: data.latitude,
+        longitude: data.longitude,
+        instructions: data.instructions,
         openingHours: data.opening_hours,
         openOnWeekends: data.open_on_weekends,
       },
