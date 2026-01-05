@@ -1,4 +1,4 @@
-import fs from 'node:fs';
+import fs from 'fs-extra';
 import path from 'node:path';
 
 export function getStorageURL(path: string): string {
@@ -16,5 +16,5 @@ export async function sendToStorage(tempPath: string, partialPath: string): Prom
 
   const localStoragePath = path.resolve(process.cwd(), 'storage', partialPath);
 
-  fs.renameSync(tempPath, localStoragePath);
+  await fs.move(tempPath, localStoragePath, { overwrite: true });
 }
