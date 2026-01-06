@@ -12,9 +12,11 @@ export function getStorageURL(path: string): string {
 export async function sendToStorage(tempPath: string, partialPath: string): Promise<void> {
   if (process.env.STORAGE_TYPE === 's3') {
     // TODO: Implement S3 upload
+    throw new Error('S3 storage is not yet implemented');
   }
 
   const localStoragePath = path.resolve(process.cwd(), 'storage', partialPath);
 
   await fs.move(tempPath, localStoragePath, { overwrite: true });
+}
 }
