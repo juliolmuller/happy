@@ -19,4 +19,3 @@ export async function sendToStorage(tempPath: string, partialPath: string): Prom
 
   await fs.move(tempPath, localStoragePath, { overwrite: true });
 }
-}
