@@ -33,20 +33,24 @@ export function OrphanageDetails() {
 
       <main>
         <div className="orphanage-details">
-          <img src={orphanage.photos[activeImage].url} alt={`Foto de ${orphanage.name}`} />
+          {orphanage.photos.length > 0 && (
+            <>
+              <img src={orphanage.photos[activeImage]} alt={`Foto de ${orphanage.name}`} />
 
-          <div className="images">
-            {orphanage.photos.map((photo, index) => (
-              <button
-                key={index}
-                type="button"
-                className={index === activeImage ? 'active' : ''}
-                onClick={() => setActiveImage(index)}
-              >
-                <img src={photo.url} alt={`Foto de ${orphanage.name}`} />
-              </button>
-            ))}
-          </div>
+              <div className="images">
+                {orphanage.photos.map((photo, index) => (
+                  <button
+                    key={photo}
+                    type="button"
+                    className={index === activeImage ? 'active' : ''}
+                    onClick={() => setActiveImage(index)}
+                  >
+                    <img src={photo} alt={`Foto de ${orphanage.name}`} />
+                  </button>
+                ))}
+              </div>
+            </>
+          )}
 
           <div className="orphanage-details-content">
             <h1>{orphanage.name}</h1>
