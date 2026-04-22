@@ -28,6 +28,10 @@ export default {
     updates: {
       fallbackToCacheTimeout: 0,
     },
+    plugins: [
+      'expo-build-properties',
+      'expo-font',
+    ],
     android: {
       package: 'juliolmuller.happy',
       versionCode: 1,
