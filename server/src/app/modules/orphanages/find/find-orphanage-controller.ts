@@ -7,7 +7,7 @@ import { type Controller } from '../../../http';
 export const findOrphanageController: Controller = async (request, response) => {
   const orphanage = await database.orphanage.findUnique({
     where: {
-      id: request.params.orphanageId,
+      id: request.params.orphanageId as string,
     },
     include: {
       photos: true,
