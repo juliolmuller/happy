@@ -3,11 +3,12 @@ packages:
   - server/
   - web/
 
-onlyBuiltDependencies:
-  - '@parcel/watcher'
-  - '@prisma/client'
-  - '@prisma/engines'
-  - '@swc/core'
-  - core-js
-  - esbuild
-  - prisma
+minRequiredVersion: 720
+
+allowBuilds:
+  '@parcel/watcher': false
+  '@prisma/client': true
+  '@prisma/engines': true
+  '@swc/core': true
+  esbuild: true
+  prisma: true
