@@ -148,19 +148,19 @@ importers:
         specifier: ^1.11.0
         version: 1.11.0
       fs-extra:
-        specifier: ^11.3.4
+        specifier: ^11.3.5
         version: 11.3.5
       http-status-codes:
         specifier: ^2.3.0
         version: 2.3.0
       morgan:
-        specifier: ^1.10.1
+        specifier: ^1.11.0
         version: 1.11.0
       multer:
         specifier: ^2.1.1
         version: 2.1.1
       zod:
-        specifier: ^4.3.6
+        specifier: ^4.4.3
         version: 4.4.3
     devDependencies:
       '@types/cors':
@@ -182,7 +182,7 @@ importers:
         specifier: ^2.1.0
         version: 2.1.0
       '@types/node':
-        specifier: ^24.12.2
+        specifier: ^24.13.0
         version: 24.13.0
       eslint:
         specifier: ^9.39.4
@@ -194,7 +194,7 @@ importers:
         specifier: ^6.19.3
         version: 6.19.3(typescript@5.9.3)
       tsx:
-        specifier: ^4.21.0
+        specifier: ^4.22.4
         version: 4.22.4
       typescript:
         specifier: ^5.9.3
