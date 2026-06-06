@@ -14,7 +14,7 @@ export default [
       camelcase: [
         'error',
         {
-          allow: ['purge_dotenv', 'opening_hours', 'open_on_weekends', 'orphanage_id'],
+          allow: ['opening_hours', 'open_on_weekends', 'orphanage_id'],
         },
       ],
     },
