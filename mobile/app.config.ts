@@ -41,7 +41,9 @@ export default {
   ],
   extra: {
     ...config.parsed,
-    eas: {},
+    eas: {
+      projectId: 'b4eb910c-e6bd-4486-a296-b808b386596f',
+    },
   },
   android: {
     package: 'com.juliolmuller.happy',
