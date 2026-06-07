@@ -16,7 +16,7 @@
     "build:dev": "eas build -e development -p android",
     "build:stage": "eas build -e preview -p android",
     "build": "eas build -p android",
-    "lint": "eslint --fix src/ eslint.config.mjs app.config.ts"
+    "lint": "eslint --fix src/ app.config.ts eslint.config.mjs"
   },
   "dependencies": {
     "@expo-google-fonts/nunito": "~0.4.2",
