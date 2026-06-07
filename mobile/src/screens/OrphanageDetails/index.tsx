@@ -1,17 +1,21 @@
-import React from 'react'
-import { Image, Linking, ScrollView, Text, View } from 'react-native'
-import { RectButton, TouchableOpacity } from 'react-native-gesture-handler'
-import { useRoute } from '@react-navigation/native'
-import MapView, { Marker } from 'react-native-maps'
-import { Feather, FontAwesome } from '@expo/vector-icons'
-import mapMarker from '~/assets/img/map-marker.png'
-import styles from './styles'
+import { Feather, FontAwesome } from '@expo/vector-icons';
+import { useRoute } from '@react-navigation/native';
+import React from 'react';
+import { Image, Linking, ScrollView, Text, View } from 'react-native';
+import { RectButton, TouchableOpacity } from 'react-native-gesture-handler';
+import MapView, { Marker } from 'react-native-maps';
+
+import mapMarker from '~/assets/img/map-marker.png';
+
+import styles from './styles';
 
 function OrphanageDetails() {
-  const orphanage = useRoute().params as Orphanage
+  const orphanage = useRoute().params as Orphanage;
 
   function handleOpenGoogleMaps() {
-    Linking.openURL(`https://www.google.com/maps/dir/?api=1&destination=${orphanage.latitude},${orphanage.longitude}`)
+    Linking.openURL(
+      `https://www.google.com/maps/dir/?api=1&destination=${orphanage.latitude},${orphanage.longitude}`,
+    );
   }
 
   return (
@@ -27,7 +31,9 @@ function OrphanageDetails() {
       <View style={styles.detailsContainer}>
         <Text style={styles.title}>{orphanage.name}</Text>
         {orphanage.about.split('\n').map((paragraph, index) => (
-          <Text key={index} style={styles.description}>{paragraph}</Text>
+          <Text key={index} style={styles.description}>
+            {paragraph}
+          </Text>
         ))}
 
         <View style={styles.mapContainer}>
@@ -51,9 +57,7 @@ function OrphanageDetails() {
           </MapView>
 
           <TouchableOpacity style={styles.routesContainer} onPress={handleOpenGoogleMaps}>
-            <Text style={styles.routesText}>
-              Ver rotas no Google Maps
-            </Text>
+            <Text style={styles.routesText}>Ver rotas no Google Maps</Text>
           </TouchableOpacity>
         </View>
 
@@ -61,7 +65,9 @@ function OrphanageDetails() {
 
         <Text style={styles.title}>Instruções para visita</Text>
         {orphanage.instructions.split('\n').map((paragraph, index) => (
-          <Text key={index} style={styles.description}>{paragraph}</Text>
+          <Text key={index} style={styles.description}>
+            {paragraph}
+          </Text>
         ))}
 
         <View style={styles.scheduleContainer}>
@@ -74,12 +80,16 @@ function OrphanageDetails() {
           {orphanage.open_on_weekends ? (
             <View style={[styles.scheduleItem, styles.scheduleItemGreen]}>
               <Feather name="info" size={40} color="#39cc83" />
-              <Text style={[styles.scheduleText, styles.scheduleTextGreen]}>Atendemos fim de semana</Text>
+              <Text style={[styles.scheduleText, styles.scheduleTextGreen]}>
+                Atendemos fim de semana
+              </Text>
             </View>
           ) : (
             <View style={[styles.scheduleItem, styles.scheduleItemRed]}>
               <Feather name="info" size={40} color="#ff669d" />
-              <Text style={[styles.scheduleText, styles.scheduleTextRed]}>Não atendemos fim de semana</Text>
+              <Text style={[styles.scheduleText, styles.scheduleTextRed]}>
+                Não atendemos fim de semana
+              </Text>
             </View>
           )}
         </View>
@@ -90,7 +100,7 @@ function OrphanageDetails() {
         </RectButton>
       </View>
     </ScrollView>
-  )
+  );
 }
 
-export default OrphanageDetails
+export default OrphanageDetails;

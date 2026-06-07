@@ -1,4 +1,4 @@
-import { Dimensions, StyleSheet } from 'react-native'
+import { Dimensions, StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   container: {
@@ -131,4 +131,4 @@ export default StyleSheet.create({
     fontSize: 16,
     marginLeft: 16,
   },
-})
+});

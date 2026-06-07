@@ -1,32 +1,34 @@
-import React from 'react'
-import { Text, View } from 'react-native'
-import { useFocusEffect, useNavigation } from '@react-navigation/native'
-import MapView, { Callout, Marker, PROVIDER_GOOGLE } from 'react-native-maps'
-import { RectButton } from 'react-native-gesture-handler'
-import { Feather } from '@expo/vector-icons'
-import api from '~/services/api'
-import mapMarker from '~/assets/img/map-marker.png'
-import styles from './styles'
+import { Feather } from '@expo/vector-icons';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
+import React from 'react';
+import { Text, View } from 'react-native';
+import { RectButton } from 'react-native-gesture-handler';
+import MapView, { Callout, Marker, PROVIDER_GOOGLE } from 'react-native-maps';
+
+import mapMarker from '~/assets/img/map-marker.png';
+import api from '~/services/api';
+
+import styles from './styles';
 
 function OrphanagesMap() {
-  const { navigate } = useNavigation()
-  const [orphanages, setOrphanages] = React.useState<Orphanage[]>([])
+  const { navigate } = useNavigation();
+  const [orphanages, setOrphanages] = React.useState<Orphanage[]>([]);
 
   const fetchOrphanages = async () => {
     try {
-      const { data } = await api.get('/orphanages')
+      const { data } = await api.get('/orphanages');
 
-      setOrphanages(data)
-    } catch (err: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
-      alert(err.message)
+      setOrphanages(data);
+    } catch (err: any) {
+      alert(err.message);
     }
-  }
+  };
 
   useFocusEffect(
     React.useCallback(() => {
-      fetchOrphanages()
+      fetchOrphanages();
     }, []),
-  )
+  );
 
   return (
     <View style={styles.container}>
@@ -57,15 +59,13 @@ function OrphanagesMap() {
       </MapView>
 
       <View style={styles.footer}>
-        <Text style={styles.footerText}>
-          {orphanages.length} orfanatos encontrados
-        </Text>
+        <Text style={styles.footerText}>{orphanages.length} orfanatos encontrados</Text>
         <RectButton style={styles.footerButton} onPress={() => navigate('OrphanagePosition')}>
           <Feather name="plus" size={20} color="#fff" />
         </RectButton>
       </View>
     </View>
-  )
+  );
 }
 
-export default OrphanagesMap
+export default OrphanagesMap;

@@ -1,17 +1,19 @@
-import React from 'react'
-import { Text, View } from 'react-native'
-import { useNavigation } from '@react-navigation/native'
-import { RectButton } from 'react-native-gesture-handler'
-import MapView, { Marker } from 'react-native-maps'
-import mapMarker from '~/assets/img/map-marker.png'
-import styles from './styles'
+import { useNavigation } from '@react-navigation/native';
+import React from 'react';
+import { Text, View } from 'react-native';
+import { RectButton } from 'react-native-gesture-handler';
+import MapView, { Marker } from 'react-native-maps';
+
+import mapMarker from '~/assets/img/map-marker.png';
+
+import styles from './styles';
 
 function OrphanagePosition() {
-  const { navigate } = useNavigation()
+  const { navigate } = useNavigation();
   const [position, setPosition] = React.useState({
     latitude: 0,
     longitude: 0,
-  })
+  });
 
   return (
     <View style={styles.container}>
@@ -36,7 +38,7 @@ function OrphanagePosition() {
         </RectButton>
       )}
     </View>
-  )
+  );
 }
 
-export default OrphanagePosition
+export default OrphanagePosition;

@@ -1,12 +1,13 @@
 /* eslint-disable @eslint-community/eslint-comments/disable-enable-pair, camelcase */
-import dotenv from 'dotenv-flow'
+import dotenv from 'dotenv-flow';
 import { type ExpoConfig } from 'expo/config';
-import npmConfig from './package.json' with { type: 'json' }
 
-const config = dotenv.config({ purge_dotenv: true })
+import npmConfig from './package.json' with { type: 'json' };
+
+const config = dotenv.config({ purge_dotenv: true });
 
 if (config.error) {
-  throw config.error
+  throw config.error;
 }
 
 export default {

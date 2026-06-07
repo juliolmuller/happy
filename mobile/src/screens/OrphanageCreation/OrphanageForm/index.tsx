@@ -1,85 +1,84 @@
-import React from 'react'
-import { Image, ScrollView, Switch, Text, TextInput, TouchableOpacity, View } from 'react-native'
-import { useNavigation, useRoute } from '@react-navigation/native'
-import { RectButton } from 'react-native-gesture-handler'
-import * as ImagePicker from 'expo-image-picker'
-import { Feather } from '@expo/vector-icons'
-import api from '../../../services/api'
-import styles from './styles'
+import { Feather } from '@expo/vector-icons';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import * as ImagePicker from 'expo-image-picker';
+import React from 'react';
+import { Image, ScrollView, Switch, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { RectButton } from 'react-native-gesture-handler';
+
+import api from '../../../services/api';
+import styles from './styles';
 
 interface OrphanageFormRouteParams {
-  latitude: number
-  longitude: number
+  latitude: number;
+  longitude: number;
 }
 
 function OrphanageForm() {
-  const { navigate } = useNavigation()
-  const { latitude, longitude } = useRoute().params as OrphanageFormRouteParams
+  const { navigate } = useNavigation();
+  const { latitude, longitude } = useRoute().params as OrphanageFormRouteParams;
 
-  const [name, setName] = React.useState('')
-  const [about, setAbout] = React.useState('')
-  const [instructions, setInstructions] = React.useState('')
-  const [openingHours, setOpeningHours] = React.useState('')
-  const [openOnWeekends, setOpenOnWeekends] = React.useState(false)
-  const [photos, setPhotos] = React.useState<string[]>([])
-  const submissionAllowed = Boolean(name && about && instructions && openingHours && photos.length)
+  const [name, setName] = React.useState('');
+  const [about, setAbout] = React.useState('');
+  const [instructions, setInstructions] = React.useState('');
+  const [openingHours, setOpeningHours] = React.useState('');
+  const [openOnWeekends, setOpenOnWeekends] = React.useState(false);
+  const [photos, setPhotos] = React.useState<string[]>([]);
+  const submissionAllowed = Boolean(name && about && instructions && openingHours && photos.length);
 
   const handleBrowsePhoto = async () => {
-    const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync()
+    const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
 
     if (status !== 'granted') {
-      alert('Ops! Você precisa fornecer uma foto para cadastra o orfanato.')
-      return
+      alert('Ops! Você precisa fornecer uma foto para cadastra o orfanato.');
+      return;
     }
 
     const result = await ImagePicker.launchImageLibraryAsync({
       mediaType: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
       quality: 1,
-    })
+    });
 
     if (!result.cancelled) {
-      setPhotos([...photos, result.uri])
+      setPhotos([...photos, result.uri]);
     }
-  }
+  };
 
   const handleFormSubmit = async () => {
-    const formData = new FormData()
+    const formData = new FormData();
 
-    formData.append('latitude', String(latitude))
-    formData.append('longitude', String(longitude))
-    formData.append('name', name)
-    formData.append('about', about)
-    formData.append('instructions', instructions)
-    formData.append('opening_hours', openingHours)
-    formData.append('open_on_weekends', String(openOnWeekends))
-    photos.forEach((photo, index) => formData.append('photos', {
-      name: `photo-${index}.jpg`,
-      type: 'image/jpg',
-      uri: photo,
-    } as never))
+    formData.append('latitude', String(latitude));
+    formData.append('longitude', String(longitude));
+    formData.append('name', name);
+    formData.append('about', about);
+    formData.append('instructions', instructions);
+    formData.append('opening_hours', openingHours);
+    formData.append('open_on_weekends', String(openOnWeekends));
+    photos.forEach((photo, index) =>
+      formData.append('photos', {
+        name: `photo-${index}.jpg`,
+        type: 'image/jpg',
+        uri: photo,
+      } as never),
+    );
 
     try {
-      await api.post('/orphanages', formData)
+      await api.post('/orphanages', formData);
 
-      navigate('OrphanagesMap')
-    } catch (error: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
+      navigate('OrphanagesMap');
+    } catch (error: any) {
       // TODO: display validation errors
-      console.error(error, { ...error })
-      alert('Falha ao tentar salvar os dados. Tente novamente mais tarde.')
+      console.error(error, { ...error });
+      alert('Falha ao tentar salvar os dados. Tente novamente mais tarde.');
     }
-  }
+  };
 
   return (
     <ScrollView style={styles.container} contentContainerStyle={{ padding: 24 }}>
       <Text style={styles.title}>Dados</Text>
 
       <Text style={styles.label}>Nome</Text>
-      <TextInput
-        style={styles.input}
-        value={name}
-        onChangeText={setName}
-      />
+      <TextInput style={styles.input} value={name} onChangeText={setName} />
 
       <Text style={styles.label}>Sobre</Text>
       <TextInput
@@ -110,11 +109,7 @@ function OrphanageForm() {
       />
 
       <Text style={styles.label}>Horario de visitas</Text>
-      <TextInput
-        style={styles.input}
-        value={openingHours}
-        onChangeText={setOpeningHours}
-      />
+      <TextInput style={styles.input} value={openingHours} onChangeText={setOpeningHours} />
 
       <View style={styles.switchContainer}>
         <Text style={styles.label}>Atende final de semana?</Text>
@@ -134,7 +129,7 @@ function OrphanageForm() {
         <Text style={styles.SubmitBtnText}>Cadastrar</Text>
       </RectButton>
     </ScrollView>
-  )
+  );
 }
 
-export default OrphanageForm
+export default OrphanageForm;
