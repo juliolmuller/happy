@@ -1,6 +1,6 @@
 import HttpStatus from 'http-status-codes';
 
-import { prismaClient as database } from '../../../../database/connection';
+import { prismaClient as database } from '../../../../database';
 import { getStorageURL } from '../../../../utils';
 import { type Controller } from '../../../http';
 

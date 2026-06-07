@@ -1,7 +1,7 @@
 import HttpStatus from 'http-status-codes';
 import * as z from 'zod';
 
-import { prismaClient as database } from '../../../../database/connection';
+import { prismaClient as database } from '../../../../database';
 import { getStorageURL, sendToStorage } from '../../../../utils';
 import { type Controller } from '../../../http';
 
