@@ -1,14 +1,7 @@
 /* eslint-disable @eslint-community/eslint-comments/disable-enable-pair, camelcase */
-import dotenv from 'dotenv-flow';
 import { type ExpoConfig } from 'expo/config';
 
 import npmConfig from './package.json' with { type: 'json' };
-
-const config = dotenv.config({ purge_dotenv: true });
-
-if (config.error) {
-  throw config.error;
-}
 
 export default {
   name: 'Happy',
@@ -41,7 +34,6 @@ export default {
     ],
   ],
   extra: {
-    ...config.parsed,
     eas: {
       projectId: 'b4eb910c-e6bd-4486-a296-b808b386596f',
     },

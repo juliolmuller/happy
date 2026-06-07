@@ -23,7 +23,6 @@
     "@react-navigation/native": "^7.2.5",
     "@react-navigation/stack": "^7.9.3",
     "axios": "^1.17.0",
-    "dotenv-flow": "^4.1.0",
     "expo": "^56.0.9",
     "expo-build-properties": "~56.0.17",
     "expo-dev-client": "~56.0.19",
